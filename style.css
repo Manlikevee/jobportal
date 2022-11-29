@@ -990,6 +990,10 @@ body {
   .job-cards {
     grid-template-columns: repeat(1, 1fr);
   }
+  .wrapper {
+
+    padding: 25px 15px;
+}
 
   .header-menu a:not(:first-child) {
     margin-left: 10px;

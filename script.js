@@ -11,11 +11,12 @@ wrapper.addEventListener("scroll", (e) => {
   : header.classList.remove("header-shadow");
 });
 
-const toggleButton = document.querySelector(".dark-light");
+// const toggleButton = document.querySelector(".dark-light");
 
-toggleButton.addEventListener("click", () => {
- document.body.classList.toggle("dark-mode");
-});
+// toggleButton.addEventListener("click", () => {
+//  document.body.classList.toggle("dark-mode");
+// });
+
 
 const jobCards = document.querySelectorAll(".job-card");
 const logo = document.querySelector(".logo");
@@ -50,3 +51,58 @@ logo.addEventListener("click", () => {
  wrapper.scrollTop = 0;
    jobBg.style.background = bg;
 });
+
+
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+ 
+  const bod = document.querySelector('body');
+  let user = getCookie("username");
+  console.log(user)
+  if (user == "dark-mode") {
+    bod.classList.add('dark-mode');
+  } else {
+    //  user = prompt("Please enter your name:","");
+     bod.classList.remove('dark-mode');
+     
+  }
+}
+
+function updateCookie(){
+  const bod = document.querySelector('body');
+  const man = bod.classList.contains('dark-mode');
+  if (bod.classList.contains('dark-mode')) {
+    bod.classList.remove('dark-mode')
+    user = 'lightmode'
+    setCookie("username", user, 30);
+
+  } else {
+    bod.classList.add('dark-mode');
+    console.log('yay')
+    user = 'dark-mode'
+    setCookie("username", user, 30);
+  }
+}
