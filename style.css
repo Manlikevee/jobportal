@@ -22,18 +22,7 @@
   --time-button: #fc5757;
   --level-button: #5052d5;
   --button-color: #fff;
-  --body-bg-color: #1d1d1d;
-  --theme-bg-color: #13131a;
-  --header-bg-color: #1c1c24;
-  --alert-bg-color: #292932;
-  --body-color: #fff;
-  --inactive-color: #292932;
-  --time-button: #fff;
-  --level-button: #fff;
-  --active-light-color: #263d63;
-  --border-color: #26262f;
-  --search-border-color: #26262f;
-  --subtitle-color: #E5E5E5;
+
 }
 
 .dark-mode {
@@ -49,6 +38,7 @@
   --border-color: #26262f;
   --search-border-color: #26262f;
   --subtitle-color: #E5E5E5;
+  
 }
 
 ::-moz-placeholder {
@@ -574,7 +564,7 @@ body {
 }
 
 .detail-button {
-  background-color: var(--active-light-color);
+  /* background-color: var(--active-light-color); */
   color: white;
   font-size: 11px;
   font-weight: 500;
