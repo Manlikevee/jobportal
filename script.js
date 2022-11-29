@@ -28,7 +28,9 @@ const jobBg = document.querySelector(".job-bg");
 jobCards.forEach((jobCard) => {
  jobCard.addEventListener("click", () => {
   const number = Math.floor(Math.random() * 10);
-  const url = `https://unsplash.it/640/425?image=${number}`;
+
+  
+  const url = `https://images.unsplash.com/photo-1544006659-f0b21884ce1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80`;
   jobBg.src = url;
 
   const logo = jobCard.querySelector("svg");
