@@ -11,6 +11,7 @@
   --body-font: "Poppins", sans-serif;
   --body-color: #2f2f33;
   --active-color: #0162ff;
+  --active-color2: #3482ff;
   --active-light-color: #e1ebfb;
   --header-bg-color: #fff;
   --search-border-color: #efefef;
@@ -24,6 +25,7 @@
   --button-color: #fff;
   --header-bg-color2: #1c1c24;
   --subtitle-color2: #E5E5E5;
+  --inactive-color3: #9b9ba5;
 
 }
 
@@ -36,6 +38,7 @@
   --alert-bg-color: #292932;
   --body-color: #fff;
   --inactive-color: #292932;
+  --inactive-color3: #292932;
   --time-button: #fff;
   --level-button: #fff;
   --active-light-color: #263d63;
