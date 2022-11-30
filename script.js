@@ -89,7 +89,7 @@ function checkCookie() {
      bod.classList.remove('dark-mode');
      
   }
-}
+}checkCookie()
 
 function updateCookie(){
   const bod = document.querySelector('body');
