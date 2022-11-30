@@ -106,3 +106,12 @@ function updateCookie(){
     setCookie("username", user, 30);
   }
 }
+
+
+function menuToggle(){
+  console.log('it clicked')
+  const toggleMenu = document.querySelector('.header-menu');
+  toggleMenu.classList.toggle('navactive')
+
+}
+
