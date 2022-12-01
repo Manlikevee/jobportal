@@ -50,7 +50,9 @@
 
 <style>
 
-
+.emptydiv{
+  display: none;
+}
 
     .face{
         background: var(--header-bg-color);
@@ -405,7 +407,7 @@
        }
 
        @media screen and (max-width:950px) {
-        .overviewscroll{
+        .overviewscrolls{
                display: flex;
                flex-direction: row !important;
                align-items: center !important;
@@ -414,18 +416,22 @@
                scroll-snap-type: inline mandatory;
                justify-content: start;
                height: fit-content;
+               transition: all .5s ease;
         }
+            .emptydiv{
+        display: flex; width: 100%; margin-left: auto;     flex-flow: row-reverse;
+       }
 
         
-        .overviewscroll::-webkit-scrollbar { height: 8px; }
+        .overviewscrolls::-webkit-scrollbar { height: 8px; }
 
-        .overviewscroll::-webkit-scrollbar-track {
+        .overviewscrolls::-webkit-scrollbar-track {
   background: transparent;
   background: var(--header-bg-color);
   border-radius: 10px;
 }
 
-.overviewscroll::-webkit-scrollbar-thumb {
+.overviewscrolls::-webkit-scrollbar-thumb {
   
   border-radius: 10px;
 
@@ -446,7 +452,7 @@ border-radius: 10px;
 }
 
 
-        .dashcards{
+        .dashcardss{
           display: flex;
                flex-direction: row !important;
                align-items: center !important;
@@ -456,23 +462,24 @@ border-radius: 10px;
                justify-content: start;
                height: fit-content;
         }
-        .dashcard{
+        .dashcardss .dashcard{
           width: 100%;
 min-width: 50%;
 scroll-snap-align: start;
 
         }
 
-        .cardstoscroll{
+        .overviewscrolls  .cardstoscroll{
 width: 100%;
 min-width: 50%;
 scroll-snap-align: start;
+transition: all .5s ease;
             }
         
        }
     
        @media screen and (max-width:850px) {
-        .overviewscroll{
+        .overviewscrolls{
                display: flex;
                flex-direction: row !important;
                align-items: center !important;
@@ -482,13 +489,13 @@ scroll-snap-align: start;
                justify-content: start;
                height: fit-content;
         }
-        .cardstoscroll{
+        .overviewscrolls   .cardstoscroll{
 width: 100%;
 min-width: 100%;
 scroll-snap-align: start;
             }
 
-            .dashcards{
+            .dashcardss{
               display: flex;
                flex-direction: row !important;
                align-items: center !important;
@@ -498,13 +505,29 @@ scroll-snap-align: start;
                justify-content: start;
                height: fit-content;
         }
-        .dashcard{
+        .dashcardss   .dashcard{
           width: 100%;
 min-width: 100%;
 scroll-snap-align: start;
         }
         
        }
+
+.fio{
+
+}
+
+   .fio2{
+    display: none;
+   }
+
+   .hide{
+    display: none;
+   }
+
+   .show{
+    display: block;
+   }
        
     </style>
 
@@ -635,7 +658,13 @@ setTimeout(greet, 5000);
  <span class="sheader">Welcome Akin!</span> 
   <br>
   <span class="stle">Here is what we have for you today</span>  
-  
+<div class="emptydiv">
+  <div class="fio" style="width: 30px; margin: 10px;" onclick="gridToggle()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Grid</title><rect x="48" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="288" y="48" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="48" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="288" y="288" width="176" height="176" rx="20" ry="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>  </div>
+    <div class="fio2" style="width: 30px; margin: 10px;" onclick="gridToggle()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>List</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 144h288M160 256h288M160 368h288"/><circle cx="80" cy="144" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="80" cy="256" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="80" cy="368" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+  </div>
+</div>
 </div>
 <div class="dashcards">
 
@@ -1121,6 +1150,6 @@ setTimeout(greet, 5000);
         document.getElementById('jobtitle2').innerHTML = input_takers;
     }
 </script>
-
+<script src="https://unpkg.com/scrollreveal@4.0.0-beta.6"></script>
 </body>
 </html>

@@ -115,3 +115,20 @@ function menuToggle(){
 
 }
 
+
+
+function gridToggle(){
+  const toggleMenu3 = document.querySelector('.fio');
+  const toggleMenu4 = document.querySelector('.fio2');
+  console.log('it clicked')
+  const toggleMenu = document.querySelector('.overviewscroll');
+  const toggleMenu2 = document.querySelector('.dashcards');
+  toggleMenu.classList.toggle('overviewscrolls');
+  toggleMenu2.classList.toggle('dashcardss');
+  toggleMenu3.classList.toggle('hide');
+  toggleMenu4.classList.toggle('show');
+  
+
+
+}
+
