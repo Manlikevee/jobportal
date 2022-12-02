@@ -15,6 +15,39 @@
 
 
 <body onload="checkCookie()">
+  <div class="loading-over">
+    <div class="popup">
+       <p id="close">×</p>
+       <br>
+   <div class="secoact">
+   <div class="logoac">
+<!--         
+       <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+           <path d="M39.8166 0.833008C18.3219 0.833008 0.833984 18.4032 0.833984 39.9997C0.833984 61.5962 18.4042 79.1663 40.0007 79.1663C61.5972 79.1663 79.1673 61.5962 79.1673 39.9997C79.1673 18.4032 61.5149 0.833008 39.8166 0.833008ZM43.9173 59.583H36.084V51.7497H43.9173V59.583ZM43.9173 43.9163H36.084V20.4163H43.9173V43.9163Z" fill="#EB7F35"/>
+           </svg> -->
+           
+
+       <img src="img/cuate.svg" alt="">
+           
+           
+   
+   </div>
+   <div class="logomen"> Update Profile </div>
+   <div class="logobod">
+       Welcome to your dashboard! 
+       Kindly, Update your Profile to Proceed!
+   </div>
+   <div class="logobtn">
+   <p>
+       <a href="" type="button" class="arwbtn"> Proceed </a>
+   </p>
+          
+    
+   </div>
+   </div>
+   </div>
+</div>
+ 
   <div class="loading-over2" style="display: block;">
     <div class="popup">
         <p id="close2">×</p>
@@ -283,7 +316,7 @@ outline-color: #007146;
 @media screen and (max-width:800px) {
   .cdivformbox2{
     width: 95%;
-    padding: 20px;
+        padding: 20px;
   }
 
   .formintwo{
@@ -495,6 +528,23 @@ document.querySelector('#close2').addEventListener("click", function () {
 document.querySelector(".loading-over2").style.display = "none";
 });
 </script>
+
+<script>
+  window.addEventListener("load", function () {
+setTimeout(
+  function open(event) {
+      document.querySelector(".loading-over").style.display = "block";
+  },
+  1000
+)
+})
+
+document.querySelector('#close').addEventListener("click", function () {
+document.querySelector(".loading-over").style.display = "none";
+});
+</script> 
+
+
 
 </body>
 </html>
