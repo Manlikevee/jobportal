@@ -660,13 +660,20 @@ Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 <div class="tpsds">
 <div class="fif">
     <div class="to">Biography</div>
-    <div class="overview-text-subheader fls">
+    <div class="overview-text-subheader fls" contenteditable="True" id="biography" onkeyup="getContent()">
       <br>
       I'm more experienced in eCommerce web projects and mobile banking apps, but also like to work with creative projects, such as landing pages or unusual corporate websites. banking apps, but also like to work with creative projects, such as landing pages or unusual corporate websites. Work with clients and web studios as freelancer.  Work in next areas: eCommerce web projects; creative landing pages; iOS and Android apps; corporate web sites and corporate identity sometimes. We are looking for a user-interface/user-experience (UI/UX) designer able to understand our business requirements and any technical limitations, as well as be responsible for conceiving and conducting user research, interviews and surveys, and translating them into sitemaps, user flows, customer journey maps, wire-frames, mock-ups and prototypes. The UI/UX designer will also be expected to design the overall functionality of the product, and in order to ensure a great user experience, iterate upon it in accordance with user-testing. We are looking for a user-interface/user-experience (UI/UX) designer able to understand our business requirements and any technical limitations, as well as be responsible for conceiving and conducting user research, interviews and surveys, and translating them into sitemaps, user flows, customer journey maps, wire-frames, mock-ups and prototypes. The UI/UX designer will also be expected to design the overall functionality of the product, and in order to ensure a great user experience, iterate upon it in accordance with user-testing.
     </div>
 </div>
 
 
+<script>
+  function getContent(){
+ var mydata =   document.getElementById("biography").innerText ;
+ console.log(document.getElementById("biography").innerText)
+ console.log(mydata)
+  }
+</script>
 
 
 </div>

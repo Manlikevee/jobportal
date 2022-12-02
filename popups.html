@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: grey; height:100vh">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+ 
+    
+    <style>
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+:root {
+  --body-bg-color: #e5ecef;
+  --theme-bg-color: #f3f3f3;
+  --body-font: "Poppins", sans-serif;
+  --body-color: #2f2f33;
+  --active-color: #0162ff;
+  --active-color2: #3482ff;
+  --active-light-color: #e1ebfb;
+  --header-bg-color: #fff;
+  --search-border-color: #efefef;
+  --border-color: #d8d8d8;
+  --alert-bg-color: #e8f2ff;
+  --subtitle-color: #1b1b1e;
+  --inactive-color: #f0f0f0;
+  --placeholder-color: #9b9ba5;
+  --time-button: #fc5757;
+  --level-button: #5052d5;
+  --button-color: #fff;
+  --header-bg-color2: #1c1c24;
+  --subtitle-color2: #E5E5E5;
+  --inactive-color3: #9b9ba5;
+
+}
+
+
+        .popup {
+  background: var(--header-bg-color);
+  color: var(--subtitle-color);
+  width: 370px;
+  padding: 30px 40px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  display: block;
+  box-shadow: 0 3px 3px 0 rgb(0 0 0 / 5%), 0 5px 15px 0 rgb(0 0 0 / 5%);
+
+}
+.popup #close ,#close2  {
+  display: block;
+  margin-top: -5px;
+  float: right;
+  background-color: transparent;
+  font-size: 35px;
+  color: var(--subtitle-color);
+  outline: none;
+  cursor: pointer;
+}
+.popup p {
+  font-size: 14px;
+  text-align: justify;
+  margin: 20px 0;
+}
+.loading-over {
+display: none;
+background-color: rgba(0, 0, 0, 0.7);
+
+position: fixed;
+backdrop-filter: blur(2px);
+bottom: 0;
+left: 0;
+right: 0;
+top: 0;
+z-index: 9999999999999999999998;
+align-items: center;
+justify-content: center;
+}
+
+.loading-over2 {
+display: none;
+background-color: rgba(0, 0, 0, 0.7);
+
+position: fixed;
+backdrop-filter: blur(2px);
+bottom: 0;
+left: 0;
+right: 0;
+top: 0;
+z-index: 9999999999999999999998;
+align-items: center;
+justify-content: center;
+}
+
+
+.secoact{
+width: 100%;
+display: flex;
+flex-direction: column;
+grid-gap: 10px;
+justify-content: center;
+align-items: center;
+}
+.logobod{
+text-align: center;
+font-size: 16px;
+font-weight: 300;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: center;
+color: var(--subtitle-color);
+
+
+}
+
+.logomen{
+
+font-size: 20px;
+font-weight: 600;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: justified;
+color: var(--subtitle-color);
+
+}
+.logobtn{
+margin-top: 5px;
+margin-bottom: 10px;
+}
+.arwbtn {
+width: 100%;
+background: #007146;
+color: white;
+padding: 10px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+}
+
+.arwbtn:hover {
+background-color: rgb(245, 245, 245);
+border: 1px solid #007146;
+color: #000;
+}
+@media screen and (max-width: 600px) {
+.popup {
+width: 90%;
+margin: auto;
+}
+.introjs-tooltip{
+opacity: 1;
+display: block;
+left: 50%;
+top: 0% !important;
+margin-left: -160px;
+margin-top: 64.5px;
+}
+
+
+}
+
+.canclb {
+  height: 72px;
+  width: 72px;
+  background-color: #219653;
+  border-radius: 50%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+    </style>
+
+
+    <div class="loading-over2" style="display: block;">
+        <div class="popup">
+            <p id="close2">×</p>
+            <br>
+        <div class="secoact">
+        <div class="logoac">
+    
+    
+    
+    
+    
+            <div class="ccccaaa">
+    <div class="canclb">
+    <ion-icon name="alert-outline" style="
+    color: white;
+    font-size: 50px;
+    " role="img" class="md hydrated" aria-label="alert outline"></ion-icon>
+    </div>
+    </div>
+    
+            
+    
+        </div>
+    
+    
+            <div class="logomen"> Error  </div>
+            
+    
+        <div class="logobod">
+    
+    
+            User not found.
+    
+        </div>
+        <div class="logobtn">
+    
+    <!--                    <a href="" type="button"  class="arwbtn"> Proceed </a>-->
+    
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+    <script>
+        window.addEventListener("load", function () {
+      setTimeout(
+        function open(event) {
+            document.querySelector(".loading-over2").style.display = "block";
+        },
+        100
+      )
+      })
+      
+      document.querySelector('#close2').addEventListener("click", function () {
+      document.querySelector(".loading-over2").style.display = "none";
+      });
+      </script>
+
+</body>
+</html>
