@@ -132,3 +132,11 @@ function gridToggle(){
 
 }
 
+
+function simpleInterestasas() {
+  const collection = document.getElementsByClassName("iti__selected-dial-code");
+
+  man = collection[0].innerHTML.substr(1)
+  document.getElementById("phonenums").value = man + document.getElementById("mobile_code").value
+  }
+
