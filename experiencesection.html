@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Job Search Platform UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body onload="checkCookie()">
+
+  <style>
+    .main-container {
+    display: flex;
+    flex-grow: 1;
+    grid-gap: 30px;
+    padding-top: 30px;
+}
+  </style>
+<!-- partial:index.partial.html -->
+<div class="header">
+  <div class="logo">
+    <a href="index.html" style="color: inherit; text-decoration:none">
+
+   
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path xmlns="http://www.w3.org/2000/svg" d="M512 503.5H381.7a48 48 0 01-45.3-32.1L265 268.1l-9-25.5 2.7-124.6L338.2 8.5l23.5 67.1L512 503.5z" fill="#0473ff" data-original="#28b446" />
+    <path xmlns="http://www.w3.org/2000/svg" fill="#0473ff" data-original="#219b38" d="M361.7 75.6L265 268.1l-9-25.5 2.7-124.6L338.2 8.5z" />
+    <path xmlns="http://www.w3.org/2000/svg" d="M338.2 8.5l-82.2 234-80.4 228.9a48 48 0 01-45.3 32.1H0l173.8-495h164.4z" fill="#0473ff" data-original="#518ef8" />
+   </svg>
+   Milao
+  </a>
+  </div>
+  <div class="header-menu">
+   <a href="createjob.html" class="active">Find Job</a>
+   <a href="dashboard.html">Company Review</a>
+   <a href="indentt2.html">Find Salaries</a>
+  </div>
+  <div class="user-settings">
+   <div class="dark-light" onclick="updateCookie()">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+   </div>
+   <div class="user-menu" onclick="menuToggle()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square">
+     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" /></svg>
+   </div>
+   
+   <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
+   <div class="user-name">Suhayel Nasim</div>
+  </div>
+ </div>
+<div class="job">
+
+
+
+ <div class="wrapper">
+
+  <div class="main-container">
+   <div class="search-type">
+    <div class="job-time">
+     <div class="job-time-title">Type of Employment</div>
+     <div class="job-wrapper">
+      <div class="type-container">
+       <input type="checkbox" id="job1" class="job-style" checked>
+       <label for="job1">Full Time Jobs</label>
+       <span class="job-number">56</span>
+      </div>
+      <div class="type-container">
+       <input type="checkbox" id="job2" class="job-style">
+       <label for="job2">Part Time Jobs</label>
+       <span class="job-number">43</span>
+      </div>
+      <div class="type-container">
+       <input type="checkbox" id="job3" class="job-style">
+       <label for="job3">Remote Jobs</label>
+       <span class="job-number">24</span>
+      </div>
+
+     </div>
+    </div>
+    <div class="job-time">
+     <div class="job-time-title">Seniority Level</div>
+     <div class="job-wrapper">
+
+      <div class="type-container">
+       <input type="checkbox" id="job8" class="job-style">
+       <label for="job8">Entry Level</label>
+       <span class="job-number">44</span>
+      </div>
+
+      <div class="type-container">
+       <input type="checkbox" id="job10" class="job-style" checked>
+       <label for="job10">Senior Level</label>
+       <span class="job-number">29</span>
+      </div>
+
+     </div>
+    </div>
+
+   </div>
+   <div class="searched-jobs">
+
+    <br>
+<style>
+  .createblock{
+    width: 100%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+  }
+
+  .createtop{
+    width: 100%;
+    display: flex;
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sjo{
+    background: var(--header-bg-color);
+    padding: 21px;
+    border-radius: 6px;
+    margin-block: 15px;
+    box-shadow: 0 3px 3px 0 rgb(0 0 0 / 5%), 0 5px 15px 0 rgb(0 0 0 / 5%);
+  }
+
+  .creatrprofile{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+ 
+ 
+  }
+
+  .creatrprofile img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .createtexteditor{
+    width: 100%;
+  }
+
+  .createtexteditor input{
+    width: 90%;
+  padding: 4px 15px;
+  margin: 6px 0 !important;
+  display: inline-block;
+  border: 1px solid #ccc;
+  font-size: 100%;
+  line-height: normal !important;
+  font-family: 'Poppins', sans-serif !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: var(--header-bg-color);
+  outline-color: transparent;
+  color: var(--subtitle-color);
+  resize: none;
+  }
+
+  .postcard{
+    width: 100%;
+    height: 100%;
+  }
+
+  .postcardheader{
+    margin-block: 10px;
+    display: flex;
+
+  }
+  .postcardname{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .postcardname > div{
+    border-radius: 5px;
+    color: var(--subtitle-color);
+
+  }
+
+  .pcardname{
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    line-height: 1.8em;
+  }
+
+  .pcardesignation{
+    font-size: 12px;
+    font-weight: 100;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    line-height: 1.8em;
+  }
+
+  .pcardtime{
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+  }
+
+
+.pcardbody{
+  font-size: 14px;
+    line-height: 1.7em;
+}
+
+
+.snl{
+  border-top: 1px solid var(--inactive-color);
+  margin-block: 7px;
+}
+.pcardicons{
+  width: 100%;
+  display: flex;
+  grid-gap: 10px;
+
+  justify-content: space-around;
+  align-items: center;
+  height: fit-content;
+}
+
+.pcardicons > ion-icon{
+  margin-top: 7px;
+  width: 12%;
+  background-color: var(--inactive-color);
+border-radius: 8px;
+  padding:  12px;
+  font-size: 16px;
+}
+
+.pcardimagebox{
+  width: 100%;
+  background-color: var(--inactive-color);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+height: fit-content;
+}
+
+.pcardimagebox img{
+  max-height: 500px;
+  border-radius: 3px;
+    object-fit: cover;
+    width: 100%;
+}
+
+@media screen and  (max-width:1200px){
+  .search-type{
+    display: none;
+  }
+  
+}
+
+@media screen and  (max-width:700px){
+  .postcardheader {
+    margin-block: 18px;
+    display: flex;
+    flex-direction: column;
+}
+  
+}
+
+</style>
+    <div class="createblock sjo">
+      <div class="createtop">
+        <div class="creatrprofile">
+<img src="https://images.unsplash.com/photo-1669982506956-49b25032c619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80" alt="">
+        </div>
+        <div class="createtexteditor">
+<input type="text" name="" id="" placeholder="whats on your mind">
+        </div>
+      </div>
+
+    </div>
+  
+  <div class="sjo">
+    <div class="postcard">
+
+ <div class="postcardheader">
+  <div class="creatrprofile">
+    <img src="https://images.unsplash.com/photo-1669982506956-49b25032c619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80" alt="">
+            </div>
+
+            <div class="postcardname">
+             <div class="pcardname">Victor Odah</div> 
+              <div class="pcardesignation">Web Developer at ISSL - Internet Solutions Services Limited</div>
+              <div class="pcardtime">2 minutes ago</div>
+            </div>
+ </div>
+ <div class="pcardbody">
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae velit facilis nulla suscipit temporibus expedita iure facere repellendus quis perferendis. Tempore quo laborum sunt asperiores voluptates aliquid cupiditate hic reprehenderit!
+</div>
+
+
+<div class="snl"></div>
+<div class="pcardicons" >
+  <ion-icon name="thumbs-up-outline"></ion-icon>
+
+  <ion-icon name="share-social-outline"></ion-icon>
+
+
+  <ion-icon name="bookmark-outline"></ion-icon>
+
+  <ion-icon name="crop-outline"></ion-icon>
+
+</div>
+
+
+    </div>
+
+
+    
+  </div>
+
+  <div class="sjo">
+    <div class="postcard">
+
+ <div class="postcardheader">
+  <div class="creatrprofile">
+    <img src="https://images.unsplash.com/photo-1669982506956-49b25032c619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80" alt="">
+            </div>
+
+            <div class="postcardname">
+             <div class="pcardname">Victor Odah</div> 
+              <div class="pcardesignation">Web Developer at ISSL - Internet Solutions Services Limited</div>
+              <div class="pcardtime">2 minutes ago</div>
+            </div>
+ </div>
+ <div class="pcardbody">
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+</div>
+
+<div class="pcardimagebox">
+<img src="https://sterlingonlineaccount.sterling.ng/static/img/started.76a4150.png" alt="" >
+</div>
+
+
+<div class="snl"></div>
+<div class="pcardicons" >
+  <ion-icon name="thumbs-up-outline"></ion-icon>
+
+  <ion-icon name="share-social-outline"></ion-icon>
+
+
+  <ion-icon name="bookmark-outline"></ion-icon>
+
+  <ion-icon name="crop-outline"></ion-icon>
+
+</div>
+
+
+    </div>
+
+
+    
+  </div>
+
+
+  <div class="sjo">
+    <div class="postcard">
+
+ <div class="postcardheader">
+  <div class="creatrprofile">
+    <img src="https://images.unsplash.com/photo-1669982506956-49b25032c619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80" alt="">
+            </div>
+
+            <div class="postcardname">
+             <div class="pcardname">Victor Odah</div> 
+              <div class="pcardesignation">Web Developer at ISSL - Internet Solutions Services Limited</div>
+              <div class="pcardtime">2 minutes ago</div>
+            </div>
+ </div>
+ <div class="pcardbody">
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+</div>
+
+<div class="pcardimagebox">
+<img src="https://plus.unsplash.com/premium_photo-1661662946348-76b7e0e9841b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" >
+</div>
+
+
+<div class="snl"></div>
+<div class="pcardicons" >
+  <ion-icon name="thumbs-up-outline"></ion-icon>
+
+  <ion-icon name="share-social-outline"></ion-icon>
+
+
+  <ion-icon name="bookmark-outline"></ion-icon>
+
+  <ion-icon name="crop-outline"></ion-icon>
+
+</div>
+
+
+    </div>
+
+
+    
+  </div>
+
+
+  <div class="sjo">
+    <div class="postcard">
+
+ <div class="postcardheader">
+  <div class="creatrprofile">
+    <img src="https://images.unsplash.com/photo-1669982506956-49b25032c619?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=709&q=80" alt="">
+            </div>
+
+            <div class="postcardname">
+             <div class="pcardname">Victor Odah</div> 
+              <div class="pcardesignation">Web Developer at ISSL - Internet Solutions Services Limited</div>
+              <div class="pcardtime">2 minutes ago</div>
+            </div>
+ </div>
+ <div class="pcardbody">
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+</div>
+
+<div class="pcardimagebox">
+<img src="https://images.unsplash.com/photo-1565963925388-7565b9e00b83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="" >
+</div>
+
+
+<div class="snl"></div>
+<div class="pcardicons" >
+  <ion-icon name="thumbs-up-outline"></ion-icon>
+
+  <ion-icon name="share-social-outline"></ion-icon>
+
+
+  <ion-icon name="bookmark-outline"></ion-icon>
+
+  <ion-icon name="crop-outline"></ion-icon>
+
+</div>
+
+
+    </div>
+
+
+    
+  </div>
+
+
+   </div>
+
+   <div class="search-type">
+    <div class="job-time">
+     <div class="job-time-title">Type of Employment</div>
+     <div class="job-wrapper">
+      <div class="type-container">
+       <input type="checkbox" id="job1" class="job-style" checked>
+       <label for="job1">Full Time Jobs</label>
+       <span class="job-number">56</span>
+      </div>
+      <div class="type-container">
+       <input type="checkbox" id="job2" class="job-style">
+       <label for="job2">Part Time Jobs</label>
+       <span class="job-number">43</span>
+      </div>
+      <div class="type-container">
+       <input type="checkbox" id="job3" class="job-style">
+       <label for="job3">Remote Jobs</label>
+       <span class="job-number">24</span>
+      </div>
+
+     </div>
+    </div>
+    <div class="job-time">
+     <div class="job-time-title">Seniority Level</div>
+     <div class="job-wrapper">
+
+      <div class="type-container">
+       <input type="checkbox" id="job8" class="job-style">
+       <label for="job8">Entry Level</label>
+       <span class="job-number">44</span>
+      </div>
+
+      <div class="type-container">
+       <input type="checkbox" id="job10" class="job-style" checked>
+       <label for="job10">Senior Level</label>
+       <span class="job-number">29</span>
+      </div>
+
+     </div>
+    </div>
+
+   </div>
+  </div>
+ </div>
+</div>
+
+<script>
+
+</script>
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script  src="./script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
