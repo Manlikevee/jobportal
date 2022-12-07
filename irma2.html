@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Job Search Platform UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body onload="checkCookie()">
+<!-- partial:index.partial.html -->
+<div class="header">
+  <div class="logo">
+    <a href="index.html" style="color: inherit; text-decoration:none">
+
+   
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path xmlns="http://www.w3.org/2000/svg" d="M512 503.5H381.7a48 48 0 01-45.3-32.1L265 268.1l-9-25.5 2.7-124.6L338.2 8.5l23.5 67.1L512 503.5z" fill="#0473ff" data-original="#28b446" />
+    <path xmlns="http://www.w3.org/2000/svg" fill="#0473ff" data-original="#219b38" d="M361.7 75.6L265 268.1l-9-25.5 2.7-124.6L338.2 8.5z" />
+    <path xmlns="http://www.w3.org/2000/svg" d="M338.2 8.5l-82.2 234-80.4 228.9a48 48 0 01-45.3 32.1H0l173.8-495h164.4z" fill="#0473ff" data-original="#518ef8" />
+   </svg>
+   Milao
+  </a>
+  </div>
+  <div class="header-menu">
+   <a href="createjob.html" class="active">Find Job</a>
+   <a href="dashboard.html">Company Review</a>
+   <a href="indentt2.html">Find Salaries</a>
+  </div>
+  <div class="user-settings">
+   <div class="dark-light" onclick="updateCookie()">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+   </div>
+   <div class="user-menu" onclick="menuToggle()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square">
+     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" /></svg>
+   </div>
+   <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
+   <div class="user-name">Suhayel Nasim</div>
+  </div>
+ </div>
+
+
+ <style>
+  .centercontainer{
+    position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-top: 110px;
+  }
+
+    
+
+
+  .cdivs {
+    width: 100%;
+    position: absolute;
+    /* transform: translate(-50%, -50%); */
+    /* top: 50%; */
+    /* left: 50%; */
+    display: flex;
+    justify-content: center;
+}
+
+  .cdivformbox{
+    background: var(--header-bg-color);
+  color: var(--subtitle-color);
+    width: 480px;
+    margin-top: 2px;
+    padding: 35px;
+    line-height: normal;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 50px -35px rgba(0, 0, 0, 0.4);
+  }
+
+  .cdivformbox2{
+    background: var(--header-bg-color);
+  color: var(--subtitle-color);
+    width: 780px;
+    margin: auto;
+    margin-top: 0px;
+    padding: 35px;
+    line-height: normal;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 50px -35px rgba(0, 0, 0, 0.4);
+  }
+
+ 
+
+  .loginboton{
+    padding-block: 6px;
+font-size: 22px;
+font-weight: 700;
+line-height: 36px;
+letter-spacing: -0.05em;
+text-align: center;
+
+  }
+
+  .lighttext{
+font-size: 14px;
+font-weight: 300;
+line-height: 17px;
+letter-spacing: 0em;
+text-align: center;
+
+  }
+
+  .loginform{
+    width: 100%;
+    padding-block: 10px;
+    display: flex;
+    grid-gap: 10px;
+    flex-direction: column;
+  }
+
+  .formcontent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .label , .forminput{
+    padding-block: 4px;
+  }
+
+  .label{
+   
+font-size: 15px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+
+  }
+
+  .forminput input[type=text], [type=email], [type=password], [type=number], [type=tel], [type=date], select {
+    width: 100%;
+    padding: 9px 18px;
+    margin: 5px 0 !important;
+    display: inline-block;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    line-height: normal !important;
+    font-family: 'Poppins', sans-serif !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background: var(--theme-bg-color);
+    color: var(--subtitle-color);
+    outline-color: transparent;
+}
+.forminput input[type=submit] {
+    font-family: inherit;
+    width: 100%;
+    font-size: 14px;
+    background:var(--active-color);
+    color: white;
+    padding: 13px 27px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.create{
+  font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+line-height: 17px;
+letter-spacing: 0em;
+text-align: center;
+}
+
+.create a{
+  font-family: Poppins;
+font-size: 15px;
+font-weight: 600;
+line-height: 17px;
+letter-spacing: 0em;
+text-align: center;
+color: var(--subtitle-color);;
+}
+
+.steppercontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 5px;
+    background: #bdc3c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+color: white;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.stepper .title {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #fff;
+}
+.formintwo{
+  display: flex;
+  grid-gap: 20px;
+}
+
+
+
+
+
+ input:focus{
+outline-color: #007146;
+      font-family: 'Poppins', sans-serif;
+       
+
+  }
+
+@media screen and (max-width:800px) {
+  .cdivformbox2{
+    width: 95%;
+        padding: 20px;
+  }
+
+  .formintwo{
+    flex-wrap: wrap;
+  }
+  .centercontainer{
+    position: absolute;
+      width: 100%;
+      margin-top: 30px;
+  }
+
+  
+  .cdivs{
+    width: 100%;
+    top: 60%;
+    position: unset;
+    transform: inherit;
+    margin-top: 100px;
+  }
+
+  .header{
+    box-shadow: 0px 4px 18px 0px rgb(0 0 0 / 4%);
+    background-color: var(--header-bg-color);
+  }
+}
+
+.progress *:not([data-progress]) {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+
+.progressdiv {
+    width: 100%;
+    background-color: var(--header-bg-color);
+}
+.progress {
+    width: 100%;
+    max-width: 99%;
+    padding: 2px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 14px 0px #0000000a;
+}
+.progress [data-progress] {
+    height: 17px;
+    box-shadow: 0 0 1px 1px rgb(0 0 0 / 35%) inset;
+    border-radius: 7px;
+    margin: 5px 0 10px 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+[data-progress].animate-progress::after {
+    content: attr(data-progress) "%";
+    width: var(--animate-progress);
+}
+
+[data-progress]::after {
+    content: "";
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: -webkit-linear-gradient(to left, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #2c3e50, #6b7f8c); 
+    width: 0;
+    height: 100%;
+    border-color: white;
+    box-sizing: border-box;
+    font-size: 10px;
+    color: white;
+    padding: 0 3px;
+    transition: 2s;
+}
+
+[data-progress].animate-progress::after {
+    content: attr(data-progress) "%";
+    width: var(--animate-progress);
+  }
+
+
+.stepper {
+    width: fit-content;
+}
+.ends {
+    display: flex;
+    margin-left: auto;
+    flex-direction: column;
+}
+.ends .numb {
+    background-color: #bdc3c7;
+}
+
+.numb {
+    margin: inherit;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    background-color: #2c3e50;
+    border-radius: 50%;
+    color: white;
+}
+</style>
+
+
+<div class="job">
+  <div class="wrapper">
+    <div class="centercontainer">
+      <div class="cdivs">
+        <div class="cdivformbox2">
+          <div class="steppercontainer">
+            <div class="stepper">
+                <div class="numb">
+1
+                </div>
+                <div class="title">
+                    Personal Information
+                </div>
+            </div>
+
+
+
+            <div class="stepper ends">
+                <div class="numb">
+2
+                </div>
+                <div class="title">
+                    Investment Information
+                </div>
+            </div>
+        </div>   
+        <div class="investment_form_title">
+                  
+          <div class="progressdiv">
+              <div class="progress">
+                <div data-progress="90"> </div>
+                </div>
+          </div>
+      </div>
+      <br>
+
+      <div class="loginboton" style="text-align: start;">
+        Register
+      </div>
+      <div class="lighttext" style="text-align: start;">
+        Kindly fill in the following details to create an account.
+      </div>
+    
+ 
+
+  <div class="loginform">
+<br>
+
+
+
+    <div class="tab-container">
+  
+      <div class="tab-navigation">              
+        <select id="select-box">
+          <option value="0">Select An Option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+        </select>
+      </div>
+      
+      <div id="tab-1" class="tab-content">
+        <form method="post" action="">
+          <br>
+        <div class="lighttext" style="text-align: start;">
+          Kindly fill in the following details to create an account.
+        </div>
+      
+      
+        <div class="formintwo">
+          <div class="formcontent">
+            <div class="label">
+              <label for="username">Username</label>
+            </div>
+            <div class="forminput">
+              <input type="text" id="id_username" name="username" placeholder="User name">
+            </div>
+            
+            </div>
+            
+            <div class="formcontent">
+              <div class="label">
+                <label for="email">Email</label>
+              </div>
+              <div class="forminput">
+                <input type="email" id="id_email" name="email" placeholder="Email Address">
+              </div>
+              
+              </div>
+        </div>
+
+        <div class="formcontent">
+          <div class="forminput">
+            <input type="submit" value="Register" style="background-color: #2c3e50;">
+          </div>
+          
+          </div>
+        </form>
+
+      </div>
+      <div id="tab-2" class="tab-content">
+     <style>
+      .investment_product_type {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 30px;
+}
+
+      .investment_product_type_text {
+        margin-block: 10px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+.investment_text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: start;
+    margin-bottom: 30px;
+}
+.transaction_header {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #007146;
+    margin-bottom: 10px;
+}
+.transaction_flex {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.transaction_flex_column {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.transaction_flex_column_content {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+ 
+}
+
+.tansaction_details {
+    display: flex;
+    grid-gap: 40px;
+    flex-wrap: wrap;
+}
+.transaction_container {
+    width: 45%;
+}
+.transaction_container svg{
+  height: fit-content;
+}
+.transaction_flex_btn {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+
+
+.investment_product_span {
+    color: #007146;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.transaction_flex_column_btn1 button{
+    position: relative;
+    background-color: #2c3e50;
+    border: 1px solid #fff;
+    font-size: 15px;
+    color: #FFFFFF;
+    border-radius: 9px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .transaction_flex_column_btn1 button:hover{
+    position: relative;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid #2c3e50;
+    color: #000;
+  
+  }
+  
+  
+  
+  .transaction_flex_column_btn2 button{
+    position: relative;
+    background-color: #fff;
+    border: 1px solid  #2c3e50;
+    font-size: 15px;
+    color:  #2c3e50;
+    border-radius: 9px;
+    padding: 15px;
+    width: 150px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.7s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .transaction_flex_column_btn2 button:hover{
+    background-color:  #2c3e50;
+    border: 1px solid #fff;
+    color: #fff;
+  
+  }
+
+  .stamp {
+    transform: rotate(12deg);
+    color: #555;
+    font-size: 3rem;
+    font-weight: 700;
+    border: 0.25rem solid #555;
+    display: inline-block;
+    padding: 0.95rem 1rem;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    font-family: "Courier";
+    -webkit-mask-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png");
+    -webkit-mask-size: 944px 604px;
+    mix-blend-mode: multiply;
+  }
+  
+  .is-nope {
+    color: #D23;
+    border: 0.5rem double #D23;
+    transform: rotate(3deg);
+    -webkit-mask-position: 2rem 3rem;
+    font-size: 3rem;
+  }
+  
+  .is-approved {
+    color: #0A9928;
+    border: 0.5rem solid #0A9928;
+    -webkit-mask-position: 13rem 6rem;
+    transform: rotate(-14deg);
+    border-radius: 0;
+  }
+  
+  .is-draft {
+    color: #C4C4C4;
+    border: 1rem double #C4C4C4;
+    transform: rotate(-5deg);
+    font-size: 6rem;
+    font-family: "Open sans", Helvetica, Arial, sans-serif;
+    border-radius: 0;
+    padding: 0.5rem;
+  }
+  .tansaction_details{
+          display: flex;
+          grid-gap: 40px;
+          flex-wrap: wrap;
+      }
+
+      @media (max-width: 991px){
+        .displacedcontainer {
+            width: 100%;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            padding: 25px;
+        }
+        
+       
+.transaction_flex_btn {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+      }
+
+      .transaction_container {
+        width: 100%;
+    }
+
+    .transaction_flex_column_btn1 button {
+        width: 100%;
+    }
+    .transaction_flex_column_btn2 button {
+        width: 100%;
+    }
+    }
+     </style>
+     <div style="width: 100%;">
+      <div class="investment_product_type">
+        <div class="investment_product_type_text">Product Type: <span class="investment_product_span">Fixed Deposit</span> </div>  
+    </div>
+    <div class="investment_text">
+      Lörem ipsum lanangen pöras suprarade, blåkort Cecilia Isaksson. Sylyrat bäplak. Ajäbel nyhetsbok utom mir inklusive antikror om bägen. Mikrootrohet Fredrik Nilsson Inga Gunnarsson.
+  </div>
+  <div class="tansaction_details">
+    <div class="transaction_container">
+        <div class="transaction_header">
+            Job Details
+        </div>
+        <div class="transaction_flex" id="principal">
+            <div class="transaction_flex_column">Job Title</div>
+            <div class="transaction_flex_column_content">N40,000</div>
+        </div>
+        <div class="transaction_flex">
+            <div class="transaction_flex_column" id="tenor">Job Id</div>
+            <div class="transaction_flex_column_content">90 days</div>
+        </div>
+
+        <div class="transaction_flex">
+            <div class="transaction_flex_column">Maturity Amount</div>
+            <div class="transaction_flex_column_content">N42,000</div>
+        </div>
+
+        <div class="transaction_flex">
+          <div class="transaction_flex_column">Vat (2%)</div>
+          <div class="transaction_flex_column_content">N2,000</div>
+      </div>
+      <div class="transaction_flex">
+        <div class="transaction_flex_column">Total Payable</div>
+        <div class="transaction_flex_column_content">N22,000</div>
+    </div>
+
+        <div class="transaction_flex_btn" id="acceptordeny">
+            <div class="transaction_flex_column_btn1"><button>I agree</button></div>
+            <div class="transaction_flex_column_btn2"><button>I don’t agree</button></div>
+        </div>
+    </div>
+    <div class="transaction_container" style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="904.36151" height="586.40556" viewBox="0 0 904.36151 586.40556" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M176.48137,606.86124c4.48183-45.74693,31.57027-91.41208,74.6711-107.3851a211.78287,211.78287,0,0,0,3.80025,145.35351c7.15367,17.90139,16.97423,37.0672,11.16353,55.44857-3.61532,11.43741-12.95662,20.35944-23.50968,26.061-10.55372,5.7016-22.35566,8.59565-34.01041,11.43411l-2.257,1.96793C186.63718,698.21181,171.99953,652.60817,176.48137,606.86124Z" transform="translate(-147.81924 -156.79722)" fill="#f0f0f0"/><path d="M251.6065,500.32709c-24.3354,28.72351-39.652,65.40748-42.33,103.01475-.579,8.1306-.4587,16.42884,1.52256,24.37642a44.70919,44.70919,0,0,0,11.65642,20.44014c5.15372,5.37408,11.04774,10.27436,14.80536,16.80764,3.96072,6.88643,4.31282,14.819,1.91945,22.30586-2.92836,9.1604-8.97355,16.7223-15.14224,23.91176-6.84915,7.98252-14.08974,16.16536-16.818,26.58246-.33057,1.26217-2.26971.67544-1.93964-.58483,4.74673-18.124,21.94191-28.79677,29.84688-45.21542,3.6886-7.66125,5.09074-16.48052,1.23988-24.36584-3.36741-6.89536-9.44106-11.95377-14.70634-17.35-5.52863-5.66617-9.81771-11.92932-12.14213-19.56139-2.37774-7.80719-2.8227-16.11821-2.45413-24.22795a175.619,175.619,0,0,1,11.43083-53.68534,184.22708,184.22708,0,0,1,31.73151-53.93217c.84063-.99221,2.21479.49823,1.37966,1.48395Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M209.502,591.07182a27.15836,27.15836,0,0,1-21.40734-27.90091,1.01382,1.01382,0,0,1,2.02582.0483,25.148,25.148,0,0,0,19.96635,25.913c1.27568.26837.68355,2.20648-.58483,1.93965Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M219.48341,645.77769a52.34557,52.34557,0,0,0,22.58173-30.7462c.335-1.261,2.27427-.67461,1.93964.58483a54.44728,54.44728,0,0,1-23.56337,31.94644c-1.10563.69542-2.05763-1.09342-.958-1.78507Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M227.84859,534.9895a15.37292,15.37292,0,0,0,14.54413-1.119c1.09627-.70909,2.04714,1.08059.958,1.78507a17.22664,17.22664,0,0,1-16.087,1.27357,1.047,1.047,0,0,1-.67741-1.26224,1.01808,1.01808,0,0,1,1.26224-.67741Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M385.83271,577.46554c-.67194.46224-1.34388.92448-2.0162,1.40385a202.453,202.453,0,0,0-25.35041,20.8777c-.61791.58057-1.23537,1.17825-1.83531,1.77536a213.4309,213.4309,0,0,0-44.68323,64.63776,207.26687,207.26687,0,0,0-10.58392,29.66048c-3.82564,14.00525-6.85927,29.49489-14.85286,41.07746a35.55812,35.55812,0,0,1-2.68,3.49066L208.915,742.34206c-.17248-.081-.34535-.145-.51867-.226l-2.98759.21475c.10637-.533.22814-1.0835.33451-1.61649.06041-.30943.13752-.6193.19793-.92874.04557-.20642.092-.413.12128-.60186.01491-.06876.03065-.13755.046-.18932.02931-.18888.0766-.36121.10636-.533q1.00829-4.61864,2.085-9.23916c-.00044-.01711-.00044-.01711.0158-.03465,5.5293-23.45682,13.06545-46.65811,23.88353-67.978.32569-.64133.6501-1.29975,1.01-1.942A197.78,197.78,0,0,1,250.266,631.86718a174.84769,174.84769,0,0,1,11.29281-13.61835,145.39679,145.39679,0,0,1,35.6617-28.19346c26.4996-14.88715,57.46538-21.13354,86.4069-13.21642C384.36766,577.042,385.092,577.24538,385.83271,577.46554Z" transform="translate(-147.81924 -156.79722)" fill="#f0f0f0"/><path d="M385.68908,578.42077c-36.724,8.28252-71.03976,28.35094-95.82017,56.7659-5.35746,6.14324-10.25754,12.84133-13.46061,20.37989a44.70911,44.70911,0,0,0-2.99937,23.33828c.87939,7.39379,2.63513,14.855,1.70188,22.33381-.98369,7.88305-5.47849,14.42874-11.89708,18.96561-7.85333,5.551-17.23287,7.94913-26.48677,9.97554-10.27469,2.24993-20.98253,4.42413-29.43272,11.099-1.02386.80875-2.2189-.82722-1.19659-1.63475,14.70188-11.61312,34.857-9.78206,51.05387-18.1321,7.55775-3.89629,13.98709-10.0938,15.65989-18.70826,1.4628-7.533-.34116-15.22859-1.29626-22.70727-1.00288-7.85274-.65662-15.43583,2.0825-22.92908,2.802-7.66517,7.4505-14.56894,12.62741-20.82222a175.61909,175.61909,0,0,1,41.44916-35.98259A184.22707,184.22707,0,0,1,385.481,576.40527c1.26856-.28611,1.46841,1.73126.20813,2.0155Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M297.43643,625.52556a27.15837,27.15837,0,0,1-.29429-35.166c.839-.99754,2.42856.25939,1.58843,1.25826a25.14805,25.14805,0,0,0,.34061,32.71117c.857.98232-.78267,2.17329-1.63475,1.19659Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M272.46929,675.21461a52.34551,52.34551,0,0,0,36.54158-10.95336c1.02669-.80509,2.222.83063,1.19659,1.63475a54.44724,54.44724,0,0,1-38.048,11.32067c-1.30148-.11041-.98459-2.11187.30982-2.00206Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M345.85055,591.79286a15.373,15.373,0,0,0,12.28639,7.86312c1.30223.09386.98393,2.09531-.30983,2.00206a17.22664,17.22664,0,0,1-13.61131-8.66859,1.047,1.047,0,0,1,.21908-1.41567,1.01807,1.01807,0,0,1,1.41567.21908Z" transform="translate(-147.81924 -156.79722)" fill="#fff"/><path d="M825.52225,196.935c-1.11853-3.30279-15.14533-14.52982-6.55011-16.41685l7.04864,9.39857,32.40662-32.406,3.25928,3.2593Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M825.52225,307.129c-1.11853-3.30276-15.14533-14.52982-6.55011-16.41684l7.04864,9.39859,32.40662-32.406,3.25928,3.25928Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M825.52225,418.89715c-1.11853-3.30277-15.14533-14.52979-6.55011-16.41684l7.04864,9.39859,32.40662-32.406,3.25928,3.25928Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><circle cx="647.86176" cy="161.73826" r="10" fill="#3f3d56"/><circle cx="647.86176" cy="52.73826" r="10" fill="#3f3d56"/><rect x="743.36151" y="29.73819" width="161" height="2" fill="#3f3d56"/><circle cx="652.86176" cy="277.93224" r="10" fill="#3f3d56"/><rect x="743.36151" y="139.93202" width="161" height="2" fill="#3f3d56"/><rect x="743.36151" y="251.70009" width="161" height="2" fill="#3f3d56"/><polygon points="702.96 277 652.96 277 652.96 226 686.96 226 686.96 228 654.96 228 654.96 275 700.96 275 700.96 252 702.96 252 702.96 277" fill="#3f3d56"/><polygon points="702.96 165 652.96 165 652.96 114 686.96 114 686.96 116 654.96 116 654.96 163 700.96 163 700.96 140 702.96 140 702.96 165" fill="#3f3d56"/><polygon points="702.96 51 652.96 51 652.96 0 686.96 0 686.96 2 654.96 2 654.96 49 700.96 49 700.96 26 702.96 26 702.96 51" fill="#3f3d56"/><path d="M524.324,338.56887s-13.36292,56.4212,2.96954,56.4212S582.23,331.145,582.23,331.145L568.867,314.81255l-23.985,33.29993-1.2561-16.96747Z" transform="translate(-147.81924 -156.79722)" fill="#a0616a"/><circle cx="430.84992" cy="163.80056" r="13" fill="#a0616a"/><polygon points="365.175 566.048 382.478 566.047 390.711 499.301 365.171 499.302 365.175 566.048" fill="#a0616a"/><path d="M512.38428,740.89682l53.2129-.002v-.673a20.71307,20.71307,0,0,0-20.71194-20.71162H544.884l-9.72-7.37412-18.13541,7.37524-4.64513.00016Z" transform="translate(-147.81924 -156.79722)" fill="#2f2e41"/><polygon points="179.038 544.459 194.521 552.185 231.693 496.14 208.841 484.736 179.038 544.459" fill="#a0616a"/><path d="M318.25035,717.13553l47.61317,23.76129.30052-.60213a20.71307,20.71307,0,0,0-9.28291-27.781l-.00115-.00057-5.404-10.93862-19.52019-1.49967-4.15631-2.07422Z" transform="translate(-147.81924 -156.79722)" fill="#2f2e41"/><rect y="584.16484" width="569.84992" height="2.24072" fill="#ccc"/><path d="M401.1174,440.9251s-6.91528,83.1485-8.4,100.9657a126.70952,126.70952,0,0,1-7.42383,32.66492s-2.96954,5.93908-2.96954,11.87817l-33.65482,61.16389s-10.28424,7.55932-8.7995,13.4984-6.2005,9.5016-6.2005,9.5016l35.44159,6.83086s-1.48477-4.45428,2.96954-5.93908,8-14.36292,8-14.36292l49.75629-81.08612L465.471,501.80209s20.78677,66.8146,25.24106,74.23843c0,0,16.33246,83.147,19.302,90.57092s4.45432,7.42383,2.96954,10.39337-1.48477,5.93909,0,7.42383,29.69538,0,29.69538,0l-7.42386-105.41858L521.89224,452.80465l-68.29937-20.78677Z" transform="translate(-147.81924 -156.79722)" fill="#2f2e41"/><circle cx="320.16699" cy="54.45159" r="31.18014" fill="#a0616a"/><path d="M524.86176,287.99532l-37.118-22.48858s-1.02884-13.9648-11.60471-14.6219c-5.30952-.32989-13.27738-.83427-25.23451-1.6052-2.527-.16293-4.23227,13.66223-7.12824,13.47462l-39.18082,10.39338,5.93909,100.96426s-8.9086,40.08878-5.93909,47.5126-7.42383,10.39338-4.45432,11.87815,0,11.87814,0,11.87814,57.906,29.69537,121.751,7.42383l-5.93909-19.302a15.58023,15.58023,0,0,0-2.96954-14.84769s5.93909-8.9086-1.48477-16.33246c0,0,2.96954-13.36291-4.45432-19.302l-1.48477-20.78677,4.45432-10.39338Z" transform="translate(-147.81924 -156.79722)" fill="#e6e6e6"/><path d="M440.9299,229.06116l-.87158-2.02441c-.1123-.26172-11.13916-26.32911-1.36523-42.40821,4.52441-7.44384,12.75146-11.64648,24.45166-12.49023,18.30713-1.32373,30.83691,3.019,37.251,12.89844a11.07543,11.07543,0,0,1-9.335,17.061h-.24609l-3.36377-4.36767-.1958.4248c-1.21778,2.63477-4.01465,4.07715-7.29053,3.76123-.55713-.04-1.05078.44092-1.44726,1.47022a2.61528,2.61528,0,0,1-1.95752,1.814c-2.42041.47119-5.87061-2.57764-7.415-4.09717a2.47811,2.47811,0,0,1-1.15528,1.70117c-1.62744.939-4.16015-.28759-4.8872-.67822-5.79151,1.23047-9.54053.90137-11.14649-.97705-1.08887,7.70361-3.42578,21.56982-6.228,22.33838a1.40089,1.40089,0,0,1-1.52929-.66846c-.67481-.876-1.27783-1.3125-1.6543-1.18994-.91162.29-1.44971,3.292-1.52685,5.22949Z" transform="translate(-147.81924 -156.79722)" fill="#2f2e41"/><path d="M508.5293,289.48013l14.81131-2.40638a72.31352,72.31352,0,0,1,20.82315,38.04084c4.45431,23.75628,5.939,28.2106,5.939,28.2106l-35.63443,8.90857-19.302-37.11924Z" transform="translate(-147.81924 -156.79722)" fill="#e6e6e6"/><rect x="496.82503" y="270.45449" width="116.39452" height="234.31056" transform="translate(-22.85274 753.63479) rotate(-85.48966)" fill="#fff"/><path d="M467.762,329.3696c-5.71637-4.08217-12.974-4.37733-15.74644-4.31865.84581,2.64018,3.47435,9.41156,9.19058,13.49552,5.73028,4.09245,12.97891,4.37863,15.74716,4.32149C476.10786,340.22872,473.47911,333.45457,467.762,329.3696Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M490.31257,403.20446l-37.507-2.95868a8.4653,8.4653,0,1,0-1.33141,16.87817h0l37.507,2.95868a8.4653,8.4653,0,0,0,1.33141-16.87817Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M667.1829,327.52712l-210.29-16.59005a18.68264,18.68264,0,0,0-20.0917,17.15915L428.71374,430.547a18.69345,18.69345,0,0,0,17.16161,20.1014l210.29,16.59006a18.68261,18.68261,0,0,0,20.0917-17.15915l7.68556-97.37532.15463-1.98944.24481-3.09575A18.68267,18.68267,0,0,0,667.1829,327.52712Zm-6.20967,89.13782-1.33248,16.87858a11.31529,11.31529,0,0,1-12.14159,10.36082l-28.13346-2.21676A11.31528,11.31528,0,0,1,609.00488,429.546l1.33252-16.87865A11.31941,11.31941,0,0,1,622.479,402.30651l28.12371,2.21931A11.32876,11.32876,0,0,1,660.97323,416.66494ZM441.83967,407.8638a10.34611,10.34611,0,0,1,11.11422-9.49093l37.50561,2.96061a10.34238,10.34238,0,1,1-1.60873,20.6221l-.01934.00492-37.50561-2.96061A10.334,10.334,0,0,1,441.83967,407.8638Zm8.02924-83.48172-.25639-1.04919,1.0789-.09888c.42182-.04533,10.39871-.941,18.16489,4.60653,7.76627,5.5476,10.14774,15.28086,10.25123,15.688l.24673,1.05158-1.07643.10859a28.42311,28.42311,0,0,1-4.589-.03035,27.13718,27.13718,0,0,1-13.57847-4.58588C452.34423,334.52489,449.96268,324.79159,449.86891,324.38208Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M629.4225,427.85879l-12.18974-.96157a3.29206,3.29206,0,0,0-.51776,6.56372l12.18973.96157a3.29206,3.29206,0,0,0,.51777-6.56372Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M651.92674,429.634l-12.18979-.96157a3.29206,3.29206,0,0,0-.51777,6.56371l12.1898.96157a3.29206,3.29206,0,0,0,.51776-6.56371Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M630.0882,419.4197l-12.18973-.96156a3.29206,3.29206,0,0,0-.51777,6.56371l12.18973.96157a3.29206,3.29206,0,0,0,.51777-6.56372Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M652.59245,421.19491l-12.1898-.96157a3.29206,3.29206,0,0,0-.51776,6.56372l12.18979.96157a3.29206,3.29206,0,0,0,.51777-6.56372Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M630.7539,410.98062l-12.18973-.96157a3.29206,3.29206,0,0,0-.51777,6.56372l12.18973.96156a3.29206,3.29206,0,0,0,.51777-6.56371Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><path d="M653.25815,412.75583l-12.18979-.96157a3.29206,3.29206,0,0,0-.51777,6.56371l12.18979.96157a3.29206,3.29206,0,0,0,.51777-6.56371Z" transform="translate(-147.81924 -156.79722)" fill="#477caf"/><rect x="556.02303" y="247.30876" width="2.0007" height="247.61314" transform="translate(-4.39383 740.56745) rotate(-85.50837)" fill="#fff"/><polygon points="536.278 193.917 536.123 195.907 527.532 195.233 435.999 188.043 436.164 186.051 527.687 193.243 536.278 193.917" fill="#3f3d56"/><path d="M382.324,329.56887s-13.36292,56.4212,2.96954,56.4212S440.23,322.145,440.23,322.145L426.867,305.81255l-23.985,33.29993-1.2561-16.96747Z" transform="translate(-147.81924 -156.79722)" fill="#a0616a"/><circle cx="288.84992" cy="154.80056" r="13" fill="#a0616a"/><path d="M415.41156,282.05627l-8.90863-8.9086s-17.81723,10.39337-19.302,20.78677-8.9086,43.05829-8.9086,43.05829l27.46823,2.22714,8.9086-13.36291Z" transform="translate(-147.81924 -156.79722)" fill="#e6e6e6"/></svg>
+
+
+<!-- <span class="stamp is-approved">Approveds</span> -->
+    </div>
+</div>
+
+     </div>
+ 
+
+      </div>
+      <div id="tab-3" class="tab-content">
+        <div style="width: 100%;">
+          <div class="investment_product_type">
+            <div class="investment_product_type_text">Product Type: <span class="investment_product_span">Fixed Deposit</span> </div>  
+        </div>
+        <div class="investment_text">
+          Lörem ipsum lanangen pöras suprarade, blåkort Cecilia Isaksson. Sylyrat bäplak. Ajäbel nyhetsbok utom mir inklusive antikror om bägen. Mikrootrohet Fredrik Nilsson Inga Gunnarsson.
+      </div>
+      <div class="tansaction_details">
+        <div class="transaction_container">
+            <div class="transaction_header">
+                Job Details
+            </div>
+            <div class="transaction_flex" id="principal">
+                <div class="transaction_flex_column">Job Title</div>
+                <div class="transaction_flex_column_content">N40,000</div>
+            </div>
+            <div class="transaction_flex">
+                <div class="transaction_flex_column" id="tenor">Job Id</div>
+                <div class="transaction_flex_column_content">90 days</div>
+            </div>
+    
+            <div class="transaction_flex">
+                <div class="transaction_flex_column">Maturity Amount</div>
+                <div class="transaction_flex_column_content">N42,000</div>
+            </div>
+    
+            <div class="transaction_flex">
+              <div class="transaction_flex_column">Vat (2%)</div>
+              <div class="transaction_flex_column_content">N2,000</div>
+          </div>
+          <div class="transaction_flex">
+            <div class="transaction_flex_column">Total Payable</div>
+            <div class="transaction_flex_column_content">N22,000</div>
+        </div>
+    
+            <div class="transaction_flex_btn" id="acceptordeny">
+                <div class="transaction_flex_column_btn1"><button>I agree</button></div>
+                <div class="transaction_flex_column_btn2"><button>I don’t agree</button></div>
+            </div>
+        </div>
+        <div class="transaction_container" style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    ">
+    
+    
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="717.67004" height="595.3292" viewBox="0 0 717.67004 595.3292" xmlns:xlink="http://www.w3.org/1999/xlink"><rect x="156.85476" width="326" height="594" rx="58.72835" fill="#3f3d56"/><path d="M718.5202,211.06773v476.54a53.29169,53.29169,0,0,1-53.23,53.23h-208.54a53.29169,53.29169,0,0,1-53.23-53.23v-476.54a53.29173,53.29173,0,0,1,53.23-53.23h27.27v9.42a16.08092,16.08092,0,0,0,16.08,16.08h121.84a16.08092,16.08092,0,0,0,16.08-16.08v-9.42h27.27A53.29174,53.29174,0,0,1,718.5202,211.06773Z" transform="translate(-241.16498 -152.3354)" fill="#fff"/><path d="M396.51974,272.83541a4.0046,4.0046,0,0,1-4-4v-8a4,4,0,0,1,8,0v8A4.00458,4.00458,0,0,1,396.51974,272.83541Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><path d="M396.51974,313.85689a4.00458,4.00458,0,0,1-4-4V287.83541a4,4,0,0,1,8,0v22.02148A4.00458,4.00458,0,0,1,396.51974,313.85689Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><path d="M396.51974,346.83541a4.00458,4.00458,0,0,1-4-4V320.81392a4,4,0,0,1,8,0v22.02149A4.00459,4.00459,0,0,1,396.51974,346.83541Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><path d="M724.51974,328.8354a4.00458,4.00458,0,0,1-4-4V271.102a4,4,0,0,1,8,0v53.7334A4.00459,4.00459,0,0,1,724.51974,328.8354Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><path d="M569.61227,170.6812h-31a2.5,2.5,0,0,1,0-5h31a2.5,2.5,0,0,1,0,5Z" transform="translate(-241.16498 -152.3354)" fill="#fff"/><circle cx="344.44729" cy="15.8458" r="2" fill="#fff"/><path d="M472.10563,181.40845h-27a5,5,0,0,1,0-10h27a5,5,0,0,1,0,10Z" transform="translate(-241.16498 -152.3354)" fill="#e6e6e6"/><path d="M574.5202,391.03047h-27a5,5,0,0,1,0-10h27a5,5,0,0,1,0,10Z" transform="translate(-241.16498 -152.3354)" fill="#e6e6e6"/><circle cx="407.94066" cy="24.07305" r="4.5" fill="#e6e6e6"/><circle cx="421.94066" cy="24.07305" r="4.5" fill="#e6e6e6"/><circle cx="435.94066" cy="24.07305" r="4.5" fill="#e6e6e6"/><path d="M647.32261,461.03047H460.59019a18.1543,18.1543,0,0,1-18.13379-18.13379V424.16426a18.1543,18.1543,0,0,1,18.13379-18.13379H647.32261a18.15431,18.15431,0,0,1,18.13379,18.13379v18.73242A18.1543,18.1543,0,0,1,647.32261,461.03047Zm-186.73242-53a16.15232,16.15232,0,0,0-16.13379,16.13379v18.73242a16.15232,16.15232,0,0,0,16.13379,16.13379H647.32261a16.152,16.152,0,0,0,16.13379-16.13379V424.16426a16.152,16.152,0,0,0-16.13379-16.13379Z" transform="translate(-241.16498 -152.3354)" fill="#e6e6e6"/><path d="M574.5202,530.03047h-27a5,5,0,0,1,0-10h27a5,5,0,0,1,0,10Z" transform="translate(-241.16498 -152.3354)" fill="#e6e6e6"/><path d="M580.7229,675.03047H541.3175a7.2973,7.2973,0,1,1,0-14.59459h39.4054a7.29729,7.29729,0,1,1,0,14.59459Z" transform="translate(-241.16498 -152.3354)" fill="#477caf"/><path d="M647.32261,600.03047H460.59019a18.1543,18.1543,0,0,1-18.13379-18.13379V563.16426a18.1543,18.1543,0,0,1,18.13379-18.13379H647.32261a18.15431,18.15431,0,0,1,18.13379,18.13379v18.73242A18.1543,18.1543,0,0,1,647.32261,600.03047Zm-186.73242-53a16.15232,16.15232,0,0,0-16.13379,16.13379v18.73242a16.15232,16.15232,0,0,0,16.13379,16.13379H647.32261a16.152,16.152,0,0,0,16.13379-16.13379V563.16426a16.152,16.152,0,0,0-16.13379-16.13379Z" transform="translate(-241.16498 -152.3354)" fill="#e6e6e6"/><rect x="198.94049" y="193.50005" width="241.5" height="2" fill="#e6e6e6"/><path d="M675.325,425.20043a6.48015,6.48015,0,0,0,7.14289,5.53822,6.21585,6.21585,0,0,0,1.005-.21495l13.43482,18.18216,11.62453-3.571-21.09692-22.91754a6.46218,6.46218,0,0,0-6.75253-4.07985,6.18429,6.18429,0,0,0-5.38088,6.89471Q675.31234,425.11645,675.325,425.20043Z" transform="translate(-241.16498 -152.3354)" fill="#ffb6b6"/><path d="M844.38642,552.853a6.48016,6.48016,0,0,1-.17263-9.03676,6.217,6.217,0,0,1,.77288-.6774l-6.55137-21.63712,9.80949-7.18718,5.77,30.61047a6.4622,6.4622,0,0,1-.7635,7.85232,6.18429,6.18429,0,0,1-8.74374.19474Q844.44617,552.91337,844.38642,552.853Z" transform="translate(-241.16498 -152.3354)" fill="#ffb6b6"/><polygon points="547.623 582.429 537.722 582.428 533.012 544.238 547.625 544.239 547.623 582.429" fill="#ffb6b6"/><path d="M789.13636,745.09346l-30.447-.00116v-.385a11.85147,11.85147,0,0,1,11.85083-11.85064h.00073l5.56152-4.21924,10.37659,4.21991,2.65783.00006Z" transform="translate(-241.16498 -152.3354)" fill="#2f2e41"/><polygon points="590.623 582.429 580.722 582.428 576.012 544.238 590.625 544.239 590.623 582.429" fill="#ffb6b6"/><path d="M832.13636,745.09346l-30.447-.00116v-.385a11.85147,11.85147,0,0,1,11.85083-11.85064h.00073l5.56152-4.21924,10.37659,4.21991,2.65783.00006Z" transform="translate(-241.16498 -152.3354)" fill="#2f2e41"/><path d="M759.4564,529.48827s-11.27034,15.7116-3.13517,42.8558,3.56824,51.41192,5.8517,56.27806,6.88025,9.48743,3.08186,13.17679-5.79839,6.68935-2.79839,7.68935,13,71,13,71l17,1s6.15844-32.51694-.42078-58.75847c0,0,1.44431-19.05013-1.56745-24.64583s-2.42122-.54845-2.2165-7.57207a61.67021,61.67021,0,0,1,2.20473-15.02363c1-4,1.57922-44.315,1.57922-44.315L814.136,620.97167a13.32144,13.32144,0,0,1,.7298,5.7607c-.40941,2.7559-.413,6.874.0888,8.315s1.06061,1.744.7812,4.59245-.27941,78.39069-.27941,78.39069h19l9-75.5422a24.75172,24.75172,0,0,1-4-6c-2-4-2.07788-4.22047-1.03894-7.11023s1.03894-8.51969,1.03894-10.20473,1.03892-78.18208-11.98054-89.43356S759.4564,529.48827,759.4564,529.48827Z" transform="translate(-241.16498 -152.3354)" fill="#2f2e41"/><path d="M817.80285,409.40283l-18.98059-4.91845-8.86-12.22L768.921,394.85109l-4.47906,16.66817-14.97969,8.6951s8.27947,87.57155,6.31006,92.38-9.03083,4.41151-3.00012,10.61,6.82952,3.7018,5.43011,10.45014-11.60059,13.89007,0,13.8192,81.60059-1.07086,79.60059-9.07086-1.9685-5.96851-4.98425-10.98425-5.0454-2.21287-4.03057-9.61431.01482-12.40144.01482-16.40144-3.35059-40.34856-3.35059-40.34856Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><path d="M758.58238,418.5344s-18.77953-2.13157-22.77953,6.86843-14.0806,27.74016-14.0806,27.74016-7.85936-8.22205-8.62-11.94858c-.64582-3.16394-1.00071,2.12112-6.28-3.6-2.36586-2.5639-.36586-2.5639-3.36586-3.5639l-6-2-10,9s-.19557,10.874,5,11-2-2,5,5c3.61437,3.61438.29921,3.01545,6.32283,6.6939s5.34391,3.66271,7.18377,5.67058,11.71387,3.46944,11.71387,3.46944l44.22047-24.47Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><path d="M807.9338,413.18615s8.05307-11.79857,21.81685,3.52985,24.05512,85.30479,23.40945,87.8166-4.27535,1.07087.03949,5.29134,7.31484,1.22047,4.31484,4.22047-9.26124,5.82315-4.13062,6.91158-14.82736,7.07958-14.82736,7.07958-2.90827-1.06261-3.03108-8.06957c-.069-3.93553,1.931-5.93553-1.069-6.93553s.689-7.67794.37354-8.832-19.31551-52.15406-19.31551-52.15406Z" transform="translate(-241.16498 -152.3354)" fill="#3f3d56"/><circle cx="535.11819" cy="214.78169" r="23.0557" fill="#ffb6b6"/><path d="M791.4564,385.03047c-5.45-4.26,2-23-7-19,0,0-11-7-13.21-2.4-2.559,5.32635-11.66,2.91-17.25,1.03a13.58179,13.58179,0,0,0,.93-3.19,25.53831,25.53831,0,0,1-3.27,2.19,6.63788,6.63788,0,0,1-2-1.64,4.06186,4.06186,0,0,1-.51-4.61c.93-1.43,2.85-1.87,3.98-3.14a1.36734,1.36734,0,0,0,.18768-1.25624,3.59356,3.59356,0,0,1,3.21981-4.50037,1.29233,1.29233,0,0,0,.61253-.1334,14.01055,14.01055,0,0,0,2.61-2.06,25.90175,25.90175,0,0,1-3.94-.11c-.27-.03-.54-.06-.81-.1a8.85621,8.85621,0,0,1,5.47-4.97,26.01548,26.01548,0,0,1,7.92-1.11c1.55-.05,3.1-.1,4.64-.15a46.39813,46.39813,0,0,1,9.79.34,23.90839,23.90839,0,0,1,16.57,11.84C802.78641,358.21046,806.4564,378.03047,791.4564,385.03047Z" transform="translate(-241.16498 -152.3354)" fill="#2f2e41"/><path d="M732.62278,493.59458,613.77313,535.615a11.7646,11.7646,0,0,1-14.99636-7.16205L578.36008,470.7068a11.76458,11.76458,0,0,1,7.162-14.99636L704.37177,413.69a11.76459,11.76459,0,0,1,14.99636,7.162l20.41667,57.74616A11.7646,11.7646,0,0,1,732.62278,493.59458Z" transform="translate(-241.16498 -152.3354)" fill="#477caf"/><path d="M606.35628,469.1179c-7.87795,5.18373-17.9746,1.28255-21.50572-4.39981l.563-.31989C592.12029,460.21775,602.08034,462.54687,606.35628,469.1179Z" transform="translate(-241.16498 -152.3354)" fill="#fff"/><path d="M705.07828,483.825a6.44745,6.44745,0,0,1-5.16088-.093c-3.38219-1.68048-4.96928-6.66335-6.24453-10.66725-.37106-1.16476-.72151-2.26506-1.07836-3.16429l-.00512-.01368a7.17056,7.17056,0,0,1,4.34526-9.10434l15.98619-5.65207a6.44312,6.44312,0,0,1,5.15532.09236c3.38135,1.67839,4.96976,6.65948,6.24614,10.66185.37217,1.16713.7237,2.26964,1.08187,3.17025a7.175,7.175,0,0,1-4.34353,9.11939Z" transform="translate(-241.16498 -152.3354)" fill="#fff"/><path d="M607.11876,499.72745a1.68835,1.68835,0,0,1-1.71678-.28508,2.11184,2.11184,0,0,1-.69086-1.95208,1.6943,1.6943,0,0,1,1.18988-1.31355l6.08417-2.15112a1.69732,1.69732,0,0,1,1.74984.27534,2.1118,2.1118,0,0,1,.69,1.95208,1.70163,1.70163,0,0,1-1.19014,1.31174l-6.08428,2.15116Z" transform="translate(-241.16498 -152.3354)" fill="#fff"/><path d="M603.88735,513.53263a2.99213,2.99213,0,0,1-2.889-1.07961,3.74264,3.74264,0,0,1-.53781-3.63014,3.00267,3.00267,0,0,1,2.5162-1.88l22.66274-7.60517a3.008,3.008,0,0,1,2.94985,1.07391,3.74258,3.74258,0,0,1,.53628,3.62984,3.01564,3.01564,0,0,1-2.516,1.87679l-22.66294,7.60521Z" transform="translate(-241.16498 -152.3354)" fill="#fff"/><rect x="579.06213" y="458.25823" width="149.13496" height="0.7122" transform="translate(-356.656 91.77431) rotate(-19.47156)" fill="#fff"/><circle cx="460.29142" cy="315.69507" r="4" fill="#477caf"/><circle cx="473.29142" cy="317.69507" r="3" fill="#477caf"/><path d="M500.03641,293.00044c0,9.29-7.42,14.63-18.22,14.63a36.01559,36.01559,0,0,1-14.16-2.95v-12.35c4.36,2.38,9.86,4.15,14.16,4.15,2.91,0,4.99-.78,4.99-3.17,0-6.17-19.72-3.89-19.72-18.21,0-9.19,7-14.69,17.54-14.69a34.11727,34.11727,0,0,1,12.87,2.38995v12.19a28.9459,28.9459,0,0,0-12.87-3.31994c-2.75,0-4.41.78-4.41,2.8C480.21641,280.29048,499.98643,277.54048,500.03641,293.00044Z" transform="translate(-241.16498 -152.3354)" fill="#635bff" fill-rule="evenodd"/><path d="M515.24638,261.29048h9.86v11.06h-9.86v18.42c0,7.68,8.2,5.29,9.86,4.62v10.53c-1.72.93994-4.83,1.71-9.09,1.71a13.03357,13.03357,0,0,1-13.44-13.33l.05-41.57,12.67-2.7Z" transform="translate(-241.16498 -152.3354)" fill="#635bff" fill-rule="evenodd"/><path d="M552.03648,261.29048v11.94c-1.61011-.57-6.8-1.3-9.86011,2.7v30.77h-12.97v-45.41h11.21l.83,3.84C544.30637,259.53047,550.37632,260.67049,552.03648,261.29048Z" transform="translate(-241.16498 -152.3354)" fill="#635bff" fill-rule="evenodd"/><polygon points="314.041 94.425 327.061 91.675 327.061 102.205 314.041 105.015 314.041 94.425" fill="#635bff" fill-rule="evenodd"/><rect x="314.04142" y="108.95508" width="13.02002" height="45.40997" fill="#635bff"/><path d="M595.31638,260.41048a14.67964,14.67964,0,0,0-10.17,4.05l-.66992-3.22h-11.42v60.51l12.9701-2.75.04992-14.69a14.62117,14.62117,0,0,0,9.19007,3.27c9.28991,0,17.75-7.47,17.75-23.92C612.96641,268.61043,604.39634,260.41048,595.31638,260.41048Zm-3.11,35.76a7.78,7.78,0,0,1-6.13-2.44l-.04992-19.26a7.74588,7.74588,0,0,1,6.17993-2.54c4.72,0,7.99,5.29,7.99,12.09C600.19639,290.98048,596.97642,296.17049,592.2064,296.17049Z" transform="translate(-241.16498 -152.3354)" fill="#635bff" fill-rule="evenodd"/><path d="M653.90635,284.18043c0-13.29-6.42993-23.76995-18.73-23.76995-12.35,0-19.83,10.48-19.83,23.66,0,15.62,8.83,23.51,21.49,23.51a28.92929,28.92929,0,0,0,14.37-3.37v-10.38a27.56047,27.56047,0,0,1-12.71,2.85c-5.03,0-9.5-1.75994-10.07007-7.88h25.38C653.80637,288.12044,653.90635,285.42049,653.90635,284.18043Zm-25.62988-4.93c0-5.87,3.57995-8.31,6.84985-8.31,3.16016,0,6.54,2.44,6.54,8.31Z" transform="translate(-241.16498 -152.3354)" fill="#635bff" fill-rule="evenodd"/><path d="M241.165,746.4746a1.18647,1.18647,0,0,0,1.19006,1.19h715.29a1.19,1.19,0,0,0,0-2.38H242.355A1.18651,1.18651,0,0,0,241.165,746.4746Z" transform="translate(-241.16498 -152.3354)" fill="#ccc"/><path d="M489.81939,720.68835a2.80741,2.80741,0,0,1-2.03464-4.86593l.19237-.76476q-.038-.09189-.07644-.18358a7.53909,7.53909,0,0,0-13.90673.05167c-2.27452,5.4781-5.17037,10.96553-5.8834,16.75771a22.30331,22.30331,0,0,0,.39152,7.6706,89.4194,89.4194,0,0,1-8.13413-37.13874,86.307,86.307,0,0,1,.53535-9.62829q.44349-3.93128,1.23055-7.80653A90.45569,90.45569,0,0,1,480.072,646.44319a24.07272,24.07272,0,0,0,10.01181-10.38734,18.36283,18.36283,0,0,0,1.67-5.01791c-.48739.06393-1.83779-7.35909-1.47018-7.81452-.67924-1.03071-1.895-1.54307-2.6368-2.54885-3.68944-5.0021-8.77254-4.12872-11.42613,2.66876-5.6687,2.861-5.72357,7.60577-2.24528,12.16915,2.2129,2.90325,2.51695,6.83168,4.45862,9.93985-.1998.25571-.40756.50344-.6073.75916a91.04,91.04,0,0,0-9.50223,15.05378,37.84589,37.84589,0,0,0-2.25945-17.5787c-2.16268-5.21725-6.21632-9.61123-9.786-14.12153-4.2878-5.41757-13.08033-3.05324-13.83575,3.81438q-.011.09975-.02141.19942.79532.44867,1.55706.95247a3.808,3.808,0,0,1-1.53533,6.92992l-.07765.012a37.88983,37.88983,0,0,0,.99876,5.66515c-4.57949,17.71009,5.30731,24.16047,19.42432,24.45023.31164.15979.61531.31958.92695.47144a92.9244,92.9244,0,0,0-5.00193,23.53931,88.13549,88.13549,0,0,0,.06392,14.23066l-.024-.16778a23.28923,23.28923,0,0,0-7.95036-13.44763c-6.11821-5.0259-14.76211-6.87666-21.36259-10.9165a4.37073,4.37073,0,0,0-6.69422,4.252q.01328.08818.027.17642a25.5806,25.5806,0,0,1,2.86848,1.38225q.79533.44877,1.55706.95247a3.8081,3.8081,0,0,1-1.53533,6.93l-.07772.01193c-.05591.008-.10387.016-.15972.024a37.92284,37.92284,0,0,0,6.97545,10.92265c2.86344,15.46021,15.162,16.927,28.31753,12.42488h.008a92.89781,92.89781,0,0,0,6.24043,18.21781h22.2928c.08-.24769.15185-.50341.22379-.75113a25.32943,25.32943,0,0,1-6.16855-.36745c1.654-2.02958,3.308-4.07513,4.962-6.10463a1.384,1.384,0,0,0,.10388-.11987c.839-1.03867,1.68595-2.06946,2.52491-3.10816l.00045-.00127a37.1011,37.1011,0,0,0-1.08711-9.45126Z" transform="translate(-241.16498 -152.3354)" fill="#f2f2f2"/></svg>
+    
+    
+    <!-- <span class="stamp is-approved">Approveds</span> -->
+        </div>
+    </div>
+    
+         </div>
+
+
+      </div>
+     <div id="tab-4" class="tab-content">
+        This is tab 4 content.
+      </div>
+      <div id="tab-5" class="tab-content">
+        This is tab 5 content.
+      </div>
+      
+    </div>
+
+ 
+
+
+ 
+    </div>  
+
+    
+
+  
+  
+
+  
+  
+  
+  </div>
+
+  
+        </div>
+  
+      </div>
+  
+    </div>
+   </div>
+<br>
+<br>
+<br>
+
+</div>
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+  <script src="progressbar.js"></script>
+<script>
+   //hide all tabs first
+$('.tab-content').hide();
+//show the first tab content
+
+
+$('#select-box').change(function () {
+   dropdown = $('#select-box').val();
+  //first hide all tabs again when a new option is selected
+  $('.tab-content').hide();
+  //then show the tab content of whatever option value was selected
+  $('#' + "tab-" + dropdown).show();                                    
+});
+</script>
+
+</body>
+</html>
