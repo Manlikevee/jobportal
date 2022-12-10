@@ -346,6 +346,221 @@ background: linear-gradient(to left, #2c3e50, #6b7f8c);
 }
 </style>
 
+<style>
+  .investment_product_type {
+display: flex;
+gap: 5px;
+margin-bottom: 30px;
+}
+
+  .investment_product_type_text {
+    margin-block: 10px;
+font-size: 15px;
+font-style: normal;
+font-weight: 600;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+}
+.investment_text {
+font-size: 14px;
+font-style: normal;
+font-weight: 300;
+line-height: 22px;
+letter-spacing: 0em;
+text-align: start;
+margin-bottom: 30px;
+}
+.transaction_header {
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+color: #007146;
+margin-bottom: 10px;
+}
+.transaction_flex {
+margin-top: 5px;
+display: flex;
+justify-content: space-between;
+}
+.transaction_flex_column {
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.transaction_flex_column_content {
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: 26px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.tansaction_details {
+display: flex;
+grid-gap: 40px;
+flex-wrap: wrap;
+}
+.transaction_container {
+width: 45%;
+}
+.transaction_container svg{
+height: fit-content;
+}
+.transaction_flex_btn {
+margin-top: 30px;
+display: flex;
+gap: 20px;
+}
+
+
+
+.investment_product_span {
+color: #007146;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+}
+
+.transaction_flex_column_btn1 button{
+position: relative;
+background-color: #2c3e50;
+border: 1px solid #fff;
+font-size: 15px;
+color: #FFFFFF;
+border-radius: 9px;
+padding: 15px;
+width: 150px;
+text-align: center;
+-webkit-transition-duration: 0.4s; /* Safari */
+transition-duration: 0.4s;
+text-decoration: none;
+overflow: hidden;
+cursor: pointer;
+}
+
+.transaction_flex_column_btn1 button:hover{
+position: relative;
+background-color: rgb(245, 245, 245);
+border: 1px solid #2c3e50;
+color: #000;
+
+}
+
+
+
+.transaction_flex_column_btn2 button{
+position: relative;
+background-color: #fff;
+border: 1px solid  #2c3e50;
+font-size: 15px;
+color:  #2c3e50;
+border-radius: 9px;
+padding: 15px;
+width: 150px;
+text-align: center;
+-webkit-transition-duration: 0.4s; /* Safari */
+transition-duration: 0.7s;
+text-decoration: none;
+overflow: hidden;
+cursor: pointer;
+}
+
+.transaction_flex_column_btn2 button:hover{
+background-color:  #2c3e50;
+border: 1px solid #fff;
+color: #fff;
+
+}
+
+.stamp {
+transform: rotate(12deg);
+color: #555;
+font-size: 3rem;
+font-weight: 700;
+border: 0.25rem solid #555;
+display: inline-block;
+padding: 0.95rem 1rem;
+text-transform: uppercase;
+border-radius: 1rem;
+font-family: "Courier";
+-webkit-mask-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png");
+-webkit-mask-size: 944px 604px;
+mix-blend-mode: multiply;
+}
+
+.is-nope {
+color: #D23;
+border: 0.5rem double #D23;
+transform: rotate(3deg);
+-webkit-mask-position: 2rem 3rem;
+font-size: 3rem;
+}
+
+.is-approved {
+color: #0A9928;
+border: 0.5rem solid #0A9928;
+-webkit-mask-position: 13rem 6rem;
+transform: rotate(-14deg);
+border-radius: 0;
+}
+
+.is-draft {
+color: #C4C4C4;
+border: 1rem double #C4C4C4;
+transform: rotate(-5deg);
+font-size: 6rem;
+font-family: "Open sans", Helvetica, Arial, sans-serif;
+border-radius: 0;
+padding: 0.5rem;
+}
+.tansaction_details{
+      display: flex;
+      grid-gap: 40px;
+      flex-wrap: wrap;
+  }
+
+  @media (max-width: 991px){
+    .displacedcontainer {
+        width: 100%;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding: 25px;
+    }
+    
+   
+.transaction_flex_btn {
+margin-top: 30px;
+display: flex;
+flex-direction: column;
+gap: 20px;
+width: 100%;
+  }
+
+  .transaction_container {
+    width: 100%;
+}
+
+.transaction_flex_column_btn1 button {
+    width: 100%;
+}
+.transaction_flex_column_btn2 button {
+    width: 100%;
+}
+}
+ </style>
 
 <div class="job">
   <div class="wrapper">
@@ -450,221 +665,7 @@ background: linear-gradient(to left, #2c3e50, #6b7f8c);
 
       </div>
       <div id="tab-2" class="tab-content">
-     <style>
-      .investment_product_type {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 30px;
-}
 
-      .investment_product_type_text {
-        margin-block: 10px;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 16px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-.investment_text {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 22px;
-    letter-spacing: 0em;
-    text-align: start;
-    margin-bottom: 30px;
-}
-.transaction_header {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 26px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #007146;
-    margin-bottom: 10px;
-}
-.transaction_flex {
-    margin-top: 5px;
-    display: flex;
-    justify-content: space-between;
-}
-.transaction_flex_column {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
-    letter-spacing: 0em;
-    text-align: left;
-
-}
-.transaction_flex_column_content {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 26px;
-    letter-spacing: 0em;
-    text-align: left;
- 
-}
-
-.tansaction_details {
-    display: flex;
-    grid-gap: 40px;
-    flex-wrap: wrap;
-}
-.transaction_container {
-    width: 45%;
-}
-.transaction_container svg{
-  height: fit-content;
-}
-.transaction_flex_btn {
-    margin-top: 30px;
-    display: flex;
-    gap: 20px;
-}
-
-
-
-.investment_product_span {
-    color: #007146;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 16px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-.transaction_flex_column_btn1 button{
-    position: relative;
-    background-color: #2c3e50;
-    border: 1px solid #fff;
-    font-size: 15px;
-    color: #FFFFFF;
-    border-radius: 9px;
-    padding: 15px;
-    width: 150px;
-    text-align: center;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .transaction_flex_column_btn1 button:hover{
-    position: relative;
-    background-color: rgb(245, 245, 245);
-    border: 1px solid #2c3e50;
-    color: #000;
-  
-  }
-  
-  
-  
-  .transaction_flex_column_btn2 button{
-    position: relative;
-    background-color: #fff;
-    border: 1px solid  #2c3e50;
-    font-size: 15px;
-    color:  #2c3e50;
-    border-radius: 9px;
-    padding: 15px;
-    width: 150px;
-    text-align: center;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.7s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  .transaction_flex_column_btn2 button:hover{
-    background-color:  #2c3e50;
-    border: 1px solid #fff;
-    color: #fff;
-  
-  }
-
-  .stamp {
-    transform: rotate(12deg);
-    color: #555;
-    font-size: 3rem;
-    font-weight: 700;
-    border: 0.25rem solid #555;
-    display: inline-block;
-    padding: 0.95rem 1rem;
-    text-transform: uppercase;
-    border-radius: 1rem;
-    font-family: "Courier";
-    -webkit-mask-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png");
-    -webkit-mask-size: 944px 604px;
-    mix-blend-mode: multiply;
-  }
-  
-  .is-nope {
-    color: #D23;
-    border: 0.5rem double #D23;
-    transform: rotate(3deg);
-    -webkit-mask-position: 2rem 3rem;
-    font-size: 3rem;
-  }
-  
-  .is-approved {
-    color: #0A9928;
-    border: 0.5rem solid #0A9928;
-    -webkit-mask-position: 13rem 6rem;
-    transform: rotate(-14deg);
-    border-radius: 0;
-  }
-  
-  .is-draft {
-    color: #C4C4C4;
-    border: 1rem double #C4C4C4;
-    transform: rotate(-5deg);
-    font-size: 6rem;
-    font-family: "Open sans", Helvetica, Arial, sans-serif;
-    border-radius: 0;
-    padding: 0.5rem;
-  }
-  .tansaction_details{
-          display: flex;
-          grid-gap: 40px;
-          flex-wrap: wrap;
-      }
-
-      @media (max-width: 991px){
-        .displacedcontainer {
-            width: 100%;
-            margin-top: 60px;
-            margin-bottom: 60px;
-            padding: 25px;
-        }
-        
-       
-.transaction_flex_btn {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-      }
-
-      .transaction_container {
-        width: 100%;
-    }
-
-    .transaction_flex_column_btn1 button {
-        width: 100%;
-    }
-    .transaction_flex_column_btn2 button {
-        width: 100%;
-    }
-    }
-     </style>
      <div style="width: 100%;">
       <div class="investment_product_type">
         <div class="investment_product_type_text">Product Type: <span class="investment_product_span">Fixed Deposit</span> </div>  
@@ -814,9 +815,7 @@ background: linear-gradient(to left, #2c3e50, #6b7f8c);
   
     </div>
    </div>
-<br>
-<br>
-<br>
+
 
 </div>
 <!-- partial -->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+  
+let x = 3800000
+let elapsed =  3800000
+  switch (true) {
+    case x <= 60000:{
+
+        let elapsedSeconds = elapsed / 1000;
+       alert(elapsedSeconds)
+        
+        break;
+    }
+
+
+        case x <= 3600000:
+            {
+              let elapsedMinutes = elapsed / (1000 * 60);
+              alert(elapsedMinutes)
+              break;
+            }
+
+            
+        case x <= 84400000:
+            {
+              let elapsedMinutes = elapsed / (1000 * 60 * 60);
+              alert(elapsedMinutes)
+              break;
+            }
+
+
+        
+   
+  
+    default:
+    let elapsedMinutes = elapsed / (86400000);
+              alert(elapsedMinutes)
+              break;
+  }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Job Search Platform UI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+<body onload="checkCookie()">
+
+  
+<!-- partial:index.partial.html -->
+<div class="header">
+  <div class="logo">
+    <a href="index.html" style="color: inherit; text-decoration:none">
+
+   
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path xmlns="http://www.w3.org/2000/svg" d="M512 503.5H381.7a48 48 0 01-45.3-32.1L265 268.1l-9-25.5 2.7-124.6L338.2 8.5l23.5 67.1L512 503.5z" fill="#0473ff" data-original="#28b446" />
+    <path xmlns="http://www.w3.org/2000/svg" fill="#0473ff" data-original="#219b38" d="M361.7 75.6L265 268.1l-9-25.5 2.7-124.6L338.2 8.5z" />
+    <path xmlns="http://www.w3.org/2000/svg" d="M338.2 8.5l-82.2 234-80.4 228.9a48 48 0 01-45.3 32.1H0l173.8-495h164.4z" fill="#0473ff" data-original="#518ef8" />
+   </svg>
+   Milao
+  </a>
+  </div>
+  <div class="header-menu">
+   <a href="createjob.html" class="active">Find Job</a>
+   <a href="dashboard.html">Company Review</a>
+   <a href="indentt2.html">Find Salaries</a>
+  </div>
+  <div class="user-settings">
+   <div class="dark-light" onclick="updateCookie()">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+   </div>
+   <div class="user-menu" onclick="menuToggle()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square">
+     <rect x="3" y="3" width="18" height="18" rx="2" ry="2" /></svg>
+   </div>
+   <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
+   <div class="user-name">Suhayel Nasim</div>
+  </div>
+ </div>
+
+<style>
+  .wrap{
+  width: 400px;
+
+  padding: 20px 16px;
+    background-color: var(--header-bg-color);
+    transition: 0.2s;
+    box-shadow: 0 3px 3px 0 rgb(0 0 0 / 5%), 0 5px 15px 0 rgb(0 0 0 / 5%);
+  border-radius: 16px;
+  padding: 30px;
+  /* box-shadow: 10px 10px 15px rgba(0,0,0,0.05); */
+}
+.wrap header{
+  height: 55px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  position: relative;
+}
+header label{
+  height: 100%;
+  z-index: 2;
+  width: 30%;
+  display: flex;
+  cursor: pointer;
+  font-size: 18px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+#tab-1:checked ~ header .tab-1,
+#tab-2:checked ~ header .tab-2,
+#tab-3:checked ~ header .tab-3{
+  color: #fff;
+}
+header label:nth-child(2){
+  width: 40%;
+}
+header .slider{
+  position: absolute;
+  height: 85%;
+  border-radius: inherit;
+  background:  linear-gradient(to left, #2c3e50, #7b8e9a);
+  transition: all 0.3s ease;
+}
+#tab-1:checked ~ header .slider{
+  left: 0%;
+  width: 90px;
+  transform: translateX(5%);
+}
+#tab-2:checked ~ header .slider{
+  left: 50%;
+  width: 120px;
+  transform: translateX(-50%);
+}
+#tab-3:checked ~ header .slider{
+  left: 100%;
+  width: 95px;
+  transform: translateX(-105%);
+}
+.wrap input[type="radio"]{
+  display: none;
+}
+.card-area{
+  overflow: hidden;
+}
+.card-area .cards{
+  display: flex;
+  width: 300%;
+}
+.cards .row{
+  width: 33.4%;
+}
+.cards .row-1{
+  transition: all 0.3s ease;
+}
+#tab-1:checked ~ .card-area .cards .row-1{
+   margin-left: 0%;
+}
+#tab-2:checked ~ .card-area .cards .row-1{
+  margin-left: -33.4%;
+}
+#tab-3:checked ~ .card-area .cards .row-1{
+   margin-left: -66.8%;
+}
+.row .price-details{
+  margin: 20px 0;
+  text-align: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+.price-details .price{
+  font-size: 55px;
+  font-weight: 600;
+  position: relative;
+  font-family: 'Noto Sans', sans-serif;
+}
+.price-details .price::before,
+.price-details .price::after{
+  position: absolute;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+.price-details .price::before{
+  content: "$";
+  left: -13px;
+  top: 17px;
+  font-size: 20px;
+}
+.price-details .price::after{
+  content: "/year";
+  right: -34px;
+  bottom: 17px;
+  font-size: 13px;
+}
+.price-details p{
+  font-size: 18px;
+  margin-top: 5px;
+}
+.row .features li{
+  display: flex;
+  font-size: 15px;
+  list-style: none;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.features li i{
+  background: linear-gradient(to left, #2c3e50, #bdc3c7);
+  background-clip: text;
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
+ color: inherit;
+}
+.features li span{
+  margin-left: 10px;
+}
+ul.features {
+    padding: 0;
+}
+.wrap button{
+  width: 100%;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  height: 50px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  background:#2c3e50;
+  transition: transform 0.3s ease;
+}
+.wrap button:hover{
+  transform: scale(0.98);
+}
+
+.det{
+  display: flex;
+  align-items: center;
+  line-height: 1.7em;
+}
+</style>
+ <style>
+  .overview-text-item {
+  font-size: 13px;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.job-explain{
+  width: 100%;
+}
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+
+  padding: .625em;
+  text-align: start;
+
+}
+
+
+.das{
+  display: flex;
+  align-items: center;
+}
+
+
+table th {
+
+
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 900px) {
+  table {
+    border: 0;
+  }
+  .das{
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    font-size: .8em;
+    margin-left: auto;
+    align-items: center;
+    justify-content: end;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.w-4 {
+    width: 1rem;
+}
+.text-green-500 {
+    --tw-text-opacity: 1;
+    color: rgba(16,185,129,var(--tw-text-opacity));
+}
+.mr-5 {
+    margin-right: 0.7rem;
+}
+.text-yellow-500 {
+    --tw-text-opacity: 1;
+    color: rgba(245,158,11,var(--tw-text-opacity));
+}
+
+.text-gray-400 {
+    --tw-text-opacity: 1;
+    color: rgba(161,161,170,var(--tw-text-opacity));
+}
+
+
+.tabs {
+  
+  display: flex;
+  list-style: none;
+padding: 4px;
+}
+.tabs li {
+  background-color: var(--header-bg-color);
+  padding: 10px;
+
+  border-right: 1px solid white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.tabs li.active,
+.tabs li:hover {
+  background-color: var(--theme-bg-color);
+}
+
+.content > div {
+  padding: 2px;
+}
+.content > div:not(:first-child) {
+  display: none;
+}
+
+</style>
+<div class="job">
+
+
+
+ <div class="wrapper det">
+
+  <div class="wrap">
+    <input type="radio" name="slider" id="tab-1">
+    <input type="radio" name="slider" id="tab-2" checked>
+    <input type="radio" name="slider" id="tab-3">
+    <header>
+      <label for="tab-1" class="tab-1">Basic</label>
+      <label for="tab-2" class="tab-2">Standard</label>
+      <label for="tab-3" class="tab-3">Team</label>
+      <div class="slider"></div>
+    </header>
+    <div class="card-area">
+      <div class="cards">
+        <div class="row row-1">
+          <div class="price-details">
+            <span class="price">19</span>
+            <p>For beginner use</p>
+          </div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i><span>100 GB Premium Bandwidth</span></li>
+            <li><i class="fas fa-check"></i><span>FREE 50+ Installation Scripts WordPress Supported</span></li>
+            <li><i class="fas fa-check"></i><span>One FREE Domain Registration .com and .np extensions only</span></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="price-details">
+            <span class="price">99</span>
+            <p>For professional use</p>
+          </div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i><span>Unlimited GB Premium Bandwidth</span></li>
+            <li><i class="fas fa-check"></i><span>FREE 200+ Installation Scripts WordPress Supported</span></li>
+            <li><i class="fas fa-check"></i><span>Five FREE Domain Registration .com and .np extensions only</span></li>
+            <li><i class="fas fa-check"></i><span>Unlimited Email Accounts & Databases</span></li>
+          </ul>
+        </div>
+        <div class="row">
+          <div class="price-details">
+            <span class="price">49</span>
+            <p>For team collaboration</p>
+          </div>
+          <ul class="features">
+            <li><i class="fas fa-check"></i><span>200 GB Premium Bandwidth</span></li>
+            <li><i class="fas fa-check"></i><span>FREE 100+ Installation Scripts WordPress Supported</span></li>
+            <li><i class="fas fa-check"></i><span>Two FREE Domain Registration .com and .np extensions only</span></li>
+            <li><i class="fas fa-check"></i><span>Unlimited Email Accounts & Databases</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <button>Choose plan</button>
+  </div>
+
+
+
+ </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+
+
+</body>
+</html>
