@@ -6,8 +6,8 @@
 
 }
 .form_body_rows{
-    padding: 30px;
-    width: 90%;
+    padding-block: 10px;
+    width: 100%;
     margin: auto;
 
 }
@@ -38,8 +38,8 @@ margin-bottom: 10px;
 .img-area {
 	position: relative;
 	width: 100%;
-	height: 240px;
-	background: var(--grey);
+	height: 340px;
+	background: var(--theme-bg-color);
 	margin-bottom: 30px;
 	border-radius: 15px;
 	overflow: hidden;
@@ -47,6 +47,7 @@ margin-bottom: 10px;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	border: 4px dotted #999;
 }
 .img-area .icon {
 	font-size: 100px;
@@ -102,30 +103,32 @@ margin-bottom: 10px;
 }
 .select-image , .select-image2 {
 	display: block;
-	width: 100%;
-	padding: 14px 0;
-	border-radius: 12px;
-	background: var(--blue);
+	width: 60%;
+	margin: auto;
+	padding: 12px 0;
+    border-radius: 3px;
+	background: linear-gradient(to left, #2c3e50, #bdc3c7);
 	color: #fff;
 	font-weight: 500;
 	font-size: 16px;
 	border: none;
 	cursor: pointer;
 	transition: all .3s ease;
+	text-align: center;
 }
 
 .select-image:hover {
 	background: #ffffff;
-    border: 1px solid #EB7F35;
-    color: #000;
+    border: 1px solid #2c3e50;
+    color: #2c3e50;
 }
 
 
 .img-area2 {
 	position: relative;
 	width: 100%;
-	height: 240px;
-	background: var(--grey);
+	height: 340px;
+	background: var(--theme-bg-color);
 	margin-bottom: 30px;
 	border-radius: 15px;
 	overflow: hidden;
@@ -133,6 +136,7 @@ margin-bottom: 10px;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	border: 4px dotted #999;
 }
 .img-area2 .icon {
 	font-size: 100px;
@@ -189,7 +193,7 @@ margin-bottom: 10px;
 @media(max-width:991px){
     .form_body_rows{
         padding: 10px;
-        width: 95%;
+        width: 100%;
         margin: auto;
     }
 }

@@ -696,19 +696,6 @@ color:
 
 
 
-<form method="POST" action="{% url 'Pymtfrm' %}">
-{% csrf_token %}
-<input type="hidden" name="authorization_code" value="{{ search_result.data.authorization.authorization_code }}" required>
-<input type="hidden" name="authorization_reference" value="{{search_result.data.reference}}" required>
-<div class="form_body_row" >
-
-    <div class="form_button_row"
->
-        <input type="submit" value="Proceed">
-    </div>
-</div>
-
-</form>
 
 
 
